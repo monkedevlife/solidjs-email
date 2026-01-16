@@ -1,13 +1,22 @@
 {
   "name": "solidjs-email",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pnpm -r build",
+    "lint": "biome check",
+    "lint:fix": "biome check --write .",
+    "test": "pnpm -r test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "packageManager": "pnpm@10.24.0"
+  "devDependencies": {
+    "@biomejs/biome": "^2.0.0",
+    "@types/node": "^22.0.0",
+    "solid-js": "^1.9.0",
+    "tsdown": "^0.11.0",
+    "typescript": "^5.8.0",
+    "vite-plugin-solid": "^2.11.0",
+    "vitest": "^4.0.0"
+  },
+  "packageManager": "pnpm@10.24.0",
+  "license": "MIT"
 }
