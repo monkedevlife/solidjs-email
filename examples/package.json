@@ -1,0 +1,19 @@
+{
+  "name": "examples",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "vite-node render-examples.tsx"
+  },
+  "dependencies": {
+    "@solidjs-email/components": "workspace:*",
+    "@solidjs-email/render": "workspace:*",
+    "solid-js": "^1.9.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "vite-node": "^5.0.0",
+    "vite-plugin-solid": "^2.11.0"
+  }
+}

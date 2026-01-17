@@ -1,0 +1,56 @@
+{
+  "name": "@solidjs-email/dev-server",
+  "version": "0.0.1",
+  "description": "Development server for previewing SolidJS email templates",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "solidjs-email": "./dist/cli.js"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsdown src/index.ts src/cli.ts --format esm --dts",
+    "build:watch": "tsdown src/index.ts src/cli.ts --format esm --dts --watch",
+    "dev": "vite-node src/cli.ts -- --dir ../../../examples/emails"
+  },
+  "keywords": [
+    "solidjs",
+    "email",
+    "preview",
+    "dev-server"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@solidjs-email/render": "workspace:*",
+    "cac": "^6.7.14",
+    "chokidar": "^4.0.0",
+    "picocolors": "^1.1.0",
+    "sirv": "^3.0.0",
+    "vite": "^6.0.0",
+    "vite-plugin-solid": "^2.11.0"
+  },
+  "devDependencies": {
+    "@solidjs-email/components": "workspace:*",
+    "@types/node": "^22.0.0",
+    "solid-js": "^1.9.0",
+    "typescript": "^5.8.0",
+    "vite-node": "^5.0.0"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.9.0"
+  }
+}

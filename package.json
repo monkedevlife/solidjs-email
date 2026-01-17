@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "pnpm -r build",
+    "dev": "pnpm --filter @solidjs-email/dev-server exec vite-node src/cli.ts --dir examples/emails",
     "lint": "biome check",
     "lint:fix": "biome check --write .",
     "test": "pnpm -r test"

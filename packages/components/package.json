@@ -34,10 +34,23 @@
   },
   "dependencies": {
     "@solidjs-email/body": "workspace:*",
+    "@solidjs-email/button": "workspace:*",
+    "@solidjs-email/column": "workspace:*",
+    "@solidjs-email/container": "workspace:*",
+    "@solidjs-email/font": "workspace:*",
     "@solidjs-email/head": "workspace:*",
+    "@solidjs-email/heading": "workspace:*",
+    "@solidjs-email/hr": "workspace:*",
     "@solidjs-email/html": "workspace:*",
+    "@solidjs-email/img": "workspace:*",
+    "@solidjs-email/link": "workspace:*",
+    "@solidjs-email/markdown": "workspace:*",
+    "@solidjs-email/preview": "workspace:*",
     "@solidjs-email/render": "workspace:*",
-    "@solidjs-email/tailwind": "workspace:*"
+    "@solidjs-email/row": "workspace:*",
+    "@solidjs-email/section": "workspace:*",
+    "@solidjs-email/tailwind": "workspace:*",
+    "@solidjs-email/text": "workspace:*"
   },
   "devDependencies": {
     "solid-js": "^1.9.0",
