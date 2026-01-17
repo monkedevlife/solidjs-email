@@ -7,7 +7,7 @@ const cli = cac('solidjs-email');
 cli
   .command('dev', 'Start the development server')
   .option('--dir <dir>', 'Path to emails directory', { default: './emails' })
-  .option('--port <port>', 'Port to run the server on', { default: 3000 })
+  .option('--port <port>', 'Port to run the server on', { default: 6008 })
   .action(async (options) => {
     const dir = options.dir as string;
     const port = Number(options.port);
@@ -17,7 +17,7 @@ cli
 cli
   .command('', 'Start the development server (default)')
   .option('--dir <dir>', 'Path to emails directory', { default: './emails' })
-  .option('--port <port>', 'Port to run the server on', { default: 3000 })
+  .option('--port <port>', 'Port to run the server on', { default: 6008 })
   .action(async (options) => {
     const dir = options.dir as string;
     const port = Number(options.port);

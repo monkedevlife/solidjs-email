@@ -261,6 +261,8 @@ export async function startDevServer(options: DevServerOptions): Promise<void> {
         '@solidjs-email/img': path.join(packagesDir, 'img/src/index.ts'),
         '@solidjs-email/hr': path.join(packagesDir, 'hr/src/index.ts'),
         '@solidjs-email/preview': path.join(packagesDir, 'preview/src/index.ts'),
+        '@solidjs-email/font': path.join(packagesDir, 'font/src/index.ts'),
+        '@solidjs-email/markdown': path.join(packagesDir, 'markdown/src/index.ts'),
         '@solidjs-email/components': path.join(packagesDir, 'components/src/index.ts'),
       },
     },

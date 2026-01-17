@@ -9,11 +9,22 @@ export interface RenderOptions {
   htmlToTextOptions?: Parameters<typeof toPlainText>[1];
 }
 
+async function processTailwind(html: string): Promise<string> {
+  try {
+    const { processTailwindInHtml } = await import('@solidjs-email/tailwind');
+    return processTailwindInHtml(html);
+  } catch {
+    return html;
+  }
+}
+
 export async function render(
   component: () => JSX.Element,
   options?: RenderOptions,
 ): Promise<string> {
-  const html = await renderToStringAsync(component);
+  let html = await renderToStringAsync(component);
+
+  html = await processTailwind(html);
 
   if (options?.plainText) {
     return toPlainText(html, options.htmlToTextOptions);

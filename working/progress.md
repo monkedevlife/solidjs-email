@@ -5,6 +5,26 @@ The agent reads this after compaction to restore context.
 
 ---
 
+## [2026-01-17 17:35] Fixed Tailwind CSS Processing in Render
+
+### Completed
+- Fixed Tailwind CSS not being applied in email previews
+- The `render()` function now automatically processes Tailwind classes via `processTailwindInHtml()`
+- Uses dynamic import to avoid hard dependency issues
+- Added `@solidjs-email/tailwind` as dependency to render package
+
+### Changes
+- `packages/render/src/render.ts` - Added `processTailwind()` helper that dynamically imports and runs Tailwind processing
+- `packages/render/package.json` - Added `@solidjs-email/tailwind` dependency
+
+### How it works
+1. `render()` calls `renderToStringAsync()` to get HTML with `class` attributes
+2. `processTailwind()` dynamically imports `processTailwindInHtml` from tailwind package
+3. Tailwind classes are converted to inline styles
+4. Non-inlinable styles (media queries) are added to `<head>` as `<style>` tag
+
+---
+
 ## [2026-01-17 17:25] Font & Markdown Components Integrated
 
 ### Completed

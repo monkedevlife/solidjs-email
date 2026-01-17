@@ -32,6 +32,7 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
+    "@solidjs-email/tailwind": "workspace:*",
     "html-to-text": "^9.0.5",
     "prettier": "^3.5.3"
   },
