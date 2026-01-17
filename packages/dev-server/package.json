@@ -1,5 +1,5 @@
 {
-  "name": "@solidjs-email/dev-server",
+  "name": "@monkedevlife/solidjs-email-dev-server",
   "version": "0.0.1",
   "description": "Development server for previewing SolidJS email templates",
   "type": "module",
@@ -35,7 +35,7 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "@solidjs-email/render": "workspace:*",
+    "@monkedevlife/solidjs-email-render": "workspace:*",
     "cac": "^6.7.14",
     "chokidar": "^4.0.0",
     "picocolors": "^1.1.0",
@@ -44,7 +44,7 @@
     "vite-plugin-solid": "^2.11.0"
   },
   "devDependencies": {
-    "@solidjs-email/components": "workspace:*",
+    "@monkedevlife/solidjs-email-components": "workspace:*",
     "@types/node": "^22.0.0",
     "solid-js": "^1.9.0",
     "typescript": "^5.8.0",
@@ -52,5 +52,14 @@
   },
   "peerDependencies": {
     "solid-js": "^1.9.0"
+  },
+  "author": "monkedevlife",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monkedevlife/solidjs-email.git",
+    "directory": "packages/dev-server"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Column } from './column';
-import { render } from '@solidjs-email/render';
+import { render } from '@monkedevlife/solidjs-email-render';
 
 describe('<Column> component', () => {
   it('renders as a td element', async () => {
@@ -45,7 +45,7 @@ describe('<Column> component', () => {
   });
 
   it('works with Row component', async () => {
-    const { Row } = await import('@solidjs-email/row');
+    const { Row } = await import('@monkedevlife/solidjs-email-row');
     const html = await render(() => (
       <Row>
         <Column>Cell 1</Column>

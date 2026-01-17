@@ -12,7 +12,7 @@ import {
   Section,
   Tailwind,
   Text,
-} from '@solidjs-email/components';
+} from '@monkedevlife/solidjs-email-components';
 
 export interface WelcomeEmailProps {
   username?: string;

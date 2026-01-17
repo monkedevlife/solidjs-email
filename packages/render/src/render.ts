@@ -11,7 +11,7 @@ export interface RenderOptions {
 
 async function processTailwind(html: string): Promise<string> {
   try {
-    const { processTailwindInHtml } = await import('@solidjs-email/tailwind');
+    const { processTailwindInHtml } = await import('@monkedevlife/solidjs-email-tailwind');
     return processTailwindInHtml(html);
   } catch {
     return html;

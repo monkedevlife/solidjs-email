@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Heading } from './heading';
-import { render } from '@solidjs-email/render';
+import { render } from '@monkedevlife/solidjs-email-render';
 
 describe('<Heading> component', () => {
   it('renders as h1 by default', async () => {

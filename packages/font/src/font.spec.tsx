@@ -1,4 +1,4 @@
-import { render } from '@solidjs-email/render';
+import { render } from '@monkedevlife/solidjs-email-render';
 import { describe, expect, it } from 'vitest';
 import { Font } from './font';
 

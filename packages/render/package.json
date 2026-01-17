@@ -1,12 +1,14 @@
 {
-  "name": "@solidjs-email/render",
+  "name": "@monkedevlife/solidjs-email-render",
   "version": "0.0.1",
   "description": "Transform SolidJS components into HTML email templates",
   "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist/**"],
+  "files": [
+    "dist/**"
+  ],
   "exports": {
     ".": {
       "import": {
@@ -27,12 +29,15 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "keywords": ["solidjs", "email"],
+  "keywords": [
+    "solidjs",
+    "email"
+  ],
   "engines": {
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "@solidjs-email/tailwind": "workspace:*",
+    "@monkedevlife/solidjs-email-tailwind": "workspace:*",
     "html-to-text": "^9.0.5",
     "prettier": "^3.5.3"
   },
@@ -43,5 +48,14 @@
     "solid-js": "^1.9.0",
     "typescript": "^5.8.0",
     "vitest": "^4.0.0"
+  },
+  "author": "monkedevlife",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monkedevlife/solidjs-email.git",
+    "directory": "packages/render"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
