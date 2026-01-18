@@ -1,0 +1,15 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --color-brand: #5850ec;
+  --color-brand-dark: #4338ca;
+  --color-accent: #10b981;
+  --color-muted: #6b7280;
+  --color-surface: #f9fafb;
+
+  --spacing-email: 24px;
+  --spacing-email-lg: 48px;
+
+  --font-family-email: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}

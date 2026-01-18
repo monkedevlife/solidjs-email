@@ -38,13 +38,14 @@ export {
   type StylesType as MarkdownStylesType,
 } from '@solidjs-email/markdown';
 export { Preview, type PreviewProps } from '@solidjs-email/preview';
-export { render, type RenderOptions } from '@solidjs-email/render';
+export { render, type RenderOptions, type TailwindOptions } from '@solidjs-email/render';
 export { Row, type RowProps } from '@solidjs-email/row';
 export { Section, type SectionProps } from '@solidjs-email/section';
 export {
   Tailwind,
   type TailwindConfig,
   type TailwindProps,
+  type TailwindProcessorOptions,
   pixelBasedPreset,
   createTailwindProcessor,
   processTailwindInHtml,

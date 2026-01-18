@@ -8,13 +8,26 @@ import utilitiesCss from './tailwind-stylesheets/utilities';
 
 export type TailwindSetup = Awaited<ReturnType<typeof setupTailwind>>;
 
-export async function setupTailwind(config: TailwindConfig) {
-  const baseCss = `
+export interface SetupTailwindOptions {
+  config?: TailwindConfig;
+  css?: string;
+}
+
+export async function setupTailwind(
+  options: TailwindConfig | SetupTailwindOptions = {},
+) {
+  const normalizedOptions = normalizeOptions(options);
+  const { config = {}, css: customCss } = normalizedOptions;
+
+  const baseCss = customCss
+    ? customCss
+    : `
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 @config;
 `;
+
   const compiler = await compile(baseCss, {
     async loadModule(id, base, resourceHint) {
       if (resourceHint === 'config') {
@@ -25,8 +38,14 @@ export async function setupTailwind(config: TailwindConfig) {
         };
       }
 
+      if (resourceHint === 'plugin') {
+        throw new Error(
+          `Plugin imports are not supported: ${id}. Use the config object to pass plugins.`,
+        );
+      }
+
       throw new Error(
-        `NO-OP: should we implement support for ${resourceHint}?`,
+        `Module loading not supported for ${resourceHint}: ${id}`,
       );
     },
     polyfills: 0,
@@ -64,7 +83,7 @@ export async function setupTailwind(config: TailwindConfig) {
       }
 
       throw new Error(
-        'stylesheet not supported, you can only import the ones from tailwindcss',
+        `Stylesheet not supported: ${id}. You can only import from tailwindcss.`,
       );
     },
   });
@@ -79,4 +98,13 @@ export async function setupTailwind(config: TailwindConfig) {
       return parse(css) as StyleSheet;
     },
   };
+}
+
+function normalizeOptions(
+  options: TailwindConfig | SetupTailwindOptions,
+): SetupTailwindOptions {
+  if ('css' in options || ('config' in options && !('theme' in options))) {
+    return options as SetupTailwindOptions;
+  }
+  return { config: options as TailwindConfig };
 }

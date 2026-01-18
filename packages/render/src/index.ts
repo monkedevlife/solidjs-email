@@ -1,1 +1,1 @@
-export { render, type RenderOptions } from './render';
+export { render, type RenderOptions, type TailwindOptions } from './render';

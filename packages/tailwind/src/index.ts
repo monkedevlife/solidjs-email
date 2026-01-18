@@ -2,6 +2,7 @@ export {
   Tailwind,
   type TailwindConfig,
   type TailwindProps,
+  type TailwindProcessorOptions,
   pixelBasedPreset,
   createTailwindProcessor,
   processTailwindInHtml,
@@ -10,4 +11,8 @@ export {
 } from './tailwind';
 export { inlineStyles } from './inline-styles';
 export { sanitizeStyleSheet } from './sanitize-stylesheet';
-export { setupTailwind, type TailwindSetup } from './utils/tailwindcss/setup-tailwind';
+export {
+  setupTailwind,
+  type TailwindSetup,
+  type SetupTailwindOptions,
+} from './utils/tailwindcss/setup-tailwind';

@@ -30,14 +30,30 @@ importers:
         specifier: ^4.0.0
         version: 4.0.17(@types/node@22.19.7)(jiti@2.6.1)
 
-  examples:
+  examples/default:
     dependencies:
       '@monkedevlife/solidjs-email-components':
         specifier: workspace:*
-        version: link:../packages/components
-      '@monkedevlife/solidjs-email-render':
+        version: link:../../packages/components
+      solid-js:
+        specifier: ^1.9.0
+        version: 1.9.10
+    devDependencies:
+      vite:
+        specifier: ^6.0.0
+        version: 6.4.1(@types/node@22.19.7)(jiti@2.6.1)
+      vite-node:
+        specifier: ^5.0.0
+        version: 5.3.0(@types/node@22.19.7)(jiti@2.6.1)
+      vite-plugin-solid:
+        specifier: ^2.11.0
+        version: 2.11.10(solid-js@1.9.10)(vite@6.4.1(@types/node@22.19.7)(jiti@2.6.1))
+
+  examples/tailwindv4:
+    dependencies:
+      '@monkedevlife/solidjs-email-components':
         specifier: workspace:*
-        version: link:../packages/render
+        version: link:../../packages/components
       solid-js:
         specifier: ^1.9.0
         version: 1.9.10

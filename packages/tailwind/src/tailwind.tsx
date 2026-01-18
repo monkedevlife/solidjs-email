@@ -14,7 +14,10 @@ import {
   type CustomProperties,
 } from './utils/css/get-custom-properties';
 import { sanitizeNonInlinableRules } from './utils/css/sanitize-non-inlinable-rules';
-import { setupTailwind } from './utils/tailwindcss/setup-tailwind';
+import {
+  setupTailwind,
+  type SetupTailwindOptions,
+} from './utils/tailwindcss/setup-tailwind';
 import { makeInlineStylesFor } from './utils/css/make-inline-styles-for';
 import { sanitizeClassName } from './utils/compatibility/sanitize-class-name';
 
@@ -23,6 +26,7 @@ export type TailwindConfig = Omit<Config, 'content'>;
 export interface TailwindProps {
   children: JSX.Element;
   config?: TailwindConfig;
+  css?: string;
 }
 
 export const pixelBasedPreset: TailwindConfig = {
@@ -84,6 +88,11 @@ export const pixelBasedPreset: TailwindConfig = {
   },
 };
 
+export interface TailwindProcessorOptions {
+  config?: TailwindConfig;
+  css?: string;
+}
+
 export interface TailwindProcessor {
   processClass: (
     className: string | undefined,
@@ -98,9 +107,10 @@ export interface TailwindProcessor {
 
 export async function createTailwindProcessor(
   classes: string[],
-  config: TailwindConfig = {},
+  options: TailwindConfig | TailwindProcessorOptions = {},
 ): Promise<TailwindProcessor> {
-  const tailwindSetup = await setupTailwind(config);
+  const normalizedOptions = normalizeProcessorOptions(options);
+  const tailwindSetup = await setupTailwind(normalizedOptions);
   tailwindSetup.addUtilities(classes);
 
   const styleSheet = tailwindSetup.getStyleSheet();
@@ -188,14 +198,14 @@ export function collectClasses(html: string): string[] {
 
 export async function processTailwindInHtml(
   html: string,
-  config: TailwindConfig = {},
+  options: TailwindConfig | TailwindProcessorOptions = {},
 ): Promise<string> {
   const classes = collectClasses(html);
   if (classes.length === 0) {
     return html;
   }
 
-  const processor = await createTailwindProcessor(classes, config);
+  const processor = await createTailwindProcessor(classes, options);
 
   let processedHtml = html.replace(
     /class="([^"]*)"/g,
@@ -234,3 +244,12 @@ export async function processTailwindInHtml(
 export const Tailwind: Component<TailwindProps> = (props) => {
   return props.children;
 };
+
+function normalizeProcessorOptions(
+  options: TailwindConfig | TailwindProcessorOptions,
+): TailwindProcessorOptions {
+  if ('css' in options || ('config' in options && !('theme' in options))) {
+    return options as TailwindProcessorOptions;
+  }
+  return { config: options as TailwindConfig };
+}

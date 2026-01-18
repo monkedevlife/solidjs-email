@@ -4,16 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "render": "vite-node render-examples.tsx"
-  },
-  "dependencies": {
-    "@monkedevlife/solidjs-email-components": "workspace:*",
-    "@monkedevlife/solidjs-email-render": "workspace:*",
-    "solid-js": "^1.9.0"
-  },
-  "devDependencies": {
-    "vite": "^6.0.0",
-    "vite-node": "^5.0.0",
-    "vite-plugin-solid": "^2.11.0"
+    "render:default": "pnpm --filter @examples/default render",
+    "render:tailwindv4": "pnpm --filter @examples/tailwindv4 render",
+    "render:all": "pnpm render:default && pnpm render:tailwindv4"
   }
 }
