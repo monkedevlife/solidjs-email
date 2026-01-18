@@ -5,6 +5,69 @@ The agent reads this after compaction to restore context.
 
 ---
 
+## [2026-01-18 16:30] Added CodeInline, CodeBlock, and GitHub Actions CI
+
+### Completed
+- Added **CodeInline component** (`@monkedevlife/solidjs-email-code-inline`):
+  - Renders `<code>` element with Orange.fr email client compatibility
+  - Uses `<style>` tag for meta-based CSS targeting
+  - 8 tests passing
+
+- Added **CodeBlock component** (`@monkedevlife/solidjs-email-code-block`):
+  - Syntax highlighting using bundled Prism.js
+  - 15+ code themes (dracula, vscDarkPlus, xonokai, etc.)
+  - Supports 400+ languages
+  - Optional line numbers
+  - 8 tests passing
+
+- Added **GitHub Actions CI workflow** (`.github/workflows/ci.yml`):
+  - Runs on push/PR to main
+  - Tests and lint jobs
+  - Uses pnpm 10.24.0 and Node 20
+
+- Added **Publish workflow** (`.github/workflows/publish.yml`):
+  - Triggers on version tags (v*)
+  - Builds, tests, and publishes all packages to npm
+
+### Current State
+- **24 workspace projects** (22 packages + examples + root)
+- **141 tests passing** across 20 packages
+- All packages build successfully
+- Dev server working on port 6008
+
+### Package Summary (Updated)
+| Package | Description | Tests |
+|---------|-------------|-------|
+| render | HTML rendering | ✅ 6 |
+| html | Html wrapper | ✅ 5 |
+| head | Head component | ✅ 4 |
+| body | Body component | ✅ 5 |
+| tailwind | Tailwind CSS | ✅ 8 |
+| button | Button link | ✅ 7 |
+| container | Container | ✅ 7 |
+| section | Section | ✅ 6 |
+| row | Row | ✅ 6 |
+| column | Column | ✅ 6 |
+| text | Text paragraph | ✅ 7 |
+| link | Link anchor | ✅ 8 |
+| heading | Heading h1-h6 | ✅ 10 |
+| img | Image | ✅ 7 |
+| hr | Horizontal rule | ✅ 6 |
+| preview | Preview text | ✅ 8 |
+| font | Custom fonts | ✅ 11 |
+| markdown | Markdown parser | ✅ 15 |
+| **code-inline** | Inline code | ✅ 8 |
+| **code-block** | Syntax highlight | ✅ 8 |
+| dev-server | Preview server | - |
+| components | Barrel export | - |
+
+### Next Steps
+- Create more example email templates
+- Publish new packages to npm
+- Consider adding Table component
+
+---
+
 ## [2026-01-17 17:35] Fixed Tailwind CSS Processing in Render
 
 ### Completed

@@ -22,6 +22,8 @@ export default defineConfig({
       '@monkedevlife/solidjs-email-tailwind': resolve(__dirname, 'packages/tailwind/src/index.ts'),
       '@monkedevlife/solidjs-email-components': resolve(__dirname, 'packages/components/src/index.ts'),
       '@monkedevlife/solidjs-email-button': resolve(__dirname, 'packages/button/src/index.ts'),
+      '@monkedevlife/solidjs-email-code-inline': resolve(__dirname, 'packages/code-inline/src/index.ts'),
+      '@monkedevlife/solidjs-email-code-block': resolve(__dirname, 'packages/code-block/src/index.ts'),
       '@monkedevlife/solidjs-email-container': resolve(__dirname, 'packages/container/src/index.ts'),
       '@monkedevlife/solidjs-email-section': resolve(__dirname, 'packages/section/src/index.ts'),
       '@monkedevlife/solidjs-email-row': resolve(__dirname, 'packages/row/src/index.ts'),

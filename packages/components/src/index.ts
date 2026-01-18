@@ -1,5 +1,28 @@
 export { Body, type BodyProps } from '@solidjs-email/body';
 export { Button, type ButtonProps } from '@solidjs-email/button';
+export {
+  CodeBlock,
+  type CodeBlockProps,
+  type PrismLanguage,
+  type Theme as CodeBlockTheme,
+  dracula,
+  vscDarkPlus,
+  xonokai,
+  duotoneForest,
+  holiTheme,
+  cb,
+  vs,
+  materialDark,
+  shadesOfPurple,
+  gruvboxDark,
+  materialOceanic,
+  synthwave84,
+  solarizedDarkAtom,
+  coldarkCold,
+  baseAteliersulphurpoolLight,
+  duotoneSpace,
+} from '@solidjs-email/code-block';
+export { CodeInline, type CodeInlineProps } from '@solidjs-email/code-inline';
 export { Column, type ColumnProps } from '@solidjs-email/column';
 export { Container, type ContainerProps } from '@solidjs-email/container';
 export { Font, type FontProps } from '@solidjs-email/font';

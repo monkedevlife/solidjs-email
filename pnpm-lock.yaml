@@ -82,6 +82,43 @@ importers:
         specifier: ^4.0.0
         version: 4.0.17(@types/node@22.19.7)(jiti@2.6.1)
 
+  packages/code-block:
+    dependencies:
+      prismjs:
+        specifier: ^1.30.0
+        version: 1.30.0
+    devDependencies:
+      '@monkedevlife/solidjs-email-render':
+        specifier: workspace:*
+        version: link:../render
+      '@types/prismjs':
+        specifier: 1.26.5
+        version: 1.26.5
+      solid-js:
+        specifier: ^1.9.0
+        version: 1.9.10
+      typescript:
+        specifier: ^5.8.0
+        version: 5.9.3
+      vitest:
+        specifier: ^4.0.0
+        version: 4.0.17(@types/node@22.19.7)(jiti@2.6.1)
+
+  packages/code-inline:
+    devDependencies:
+      '@monkedevlife/solidjs-email-render':
+        specifier: workspace:*
+        version: link:../render
+      solid-js:
+        specifier: ^1.9.0
+        version: 1.9.10
+      typescript:
+        specifier: ^5.8.0
+        version: 5.9.3
+      vitest:
+        specifier: ^4.0.0
+        version: 4.0.17(@types/node@22.19.7)(jiti@2.6.1)
+
   packages/column:
     devDependencies:
       '@monkedevlife/solidjs-email-render':
@@ -105,6 +142,12 @@ importers:
       '@monkedevlife/solidjs-email-button':
         specifier: workspace:*
         version: link:../button
+      '@monkedevlife/solidjs-email-code-block':
+        specifier: workspace:*
+        version: link:../code-block
+      '@monkedevlife/solidjs-email-code-inline':
+        specifier: workspace:*
+        version: link:../code-inline
       '@monkedevlife/solidjs-email-column':
         specifier: workspace:*
         version: link:../column
@@ -1159,6 +1202,9 @@ packages:
   '@types/node@22.19.7':
     resolution: {integrity: sha512-MciR4AKGHWl7xwxkBa6xUGxQJ4VBOmPTF7sL+iGzuahOFaO0jHCsuEfS80pan1ef4gWId1oWOweIhrDEYLuaOw==}
 
+  '@types/prismjs@1.26.5':
+    resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
+
   '@vitest/expect@4.0.17':
     resolution: {integrity: sha512-mEoqP3RqhKlbmUmntNDDCJeTDavDR+fVYkSOw8qRwJFaW/0/5zA9zFeTrHqNtcmwh6j26yMmwx2PqUDPzt5ZAQ==}
 
@@ -1456,6 +1502,10 @@ packages:
     resolution: {integrity: sha512-yEPsovQfpxYfgWNhCfECjG5AQaO+K3dp6XERmOepyPDVqcJm+bjyCVO3pmU+nAPe0N5dDvekfGezt/EIiRe1TA==}
     engines: {node: '>=14'}
     hasBin: true
+
+  prismjs@1.30.0:
+    resolution: {integrity: sha512-DEvV2ZF2r2/63V+tK8hQvrR2ZGn10srHbXviTlcv7Kpzw8jWiNTqbVgjO3IY8RxrrOUF8VPMQQFysYYYv0YZxw==}
+    engines: {node: '>=6'}
 
   quansync@1.0.0:
     resolution: {integrity: sha512-5xZacEEufv3HSTPQuchrvV6soaiACMFnq1H8wkVioctoH3TRha9Sz66lOxRwPK/qZj7HPiSveih9yAyh98gvqA==}
@@ -2270,6 +2320,8 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
+  '@types/prismjs@1.26.5': {}
+
   '@vitest/expect@4.0.17':
     dependencies:
       '@standard-schema/spec': 1.1.0
@@ -2567,6 +2619,8 @@ snapshots:
       source-map-js: 1.2.1
 
   prettier@3.8.0: {}
+
+  prismjs@1.30.0: {}
 
   quansync@1.0.0: {}
 

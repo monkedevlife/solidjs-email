@@ -40,6 +40,8 @@
   "dependencies": {
     "@monkedevlife/solidjs-email-body": "workspace:*",
     "@monkedevlife/solidjs-email-button": "workspace:*",
+    "@monkedevlife/solidjs-email-code-block": "workspace:*",
+    "@monkedevlife/solidjs-email-code-inline": "workspace:*",
     "@monkedevlife/solidjs-email-column": "workspace:*",
     "@monkedevlife/solidjs-email-container": "workspace:*",
     "@monkedevlife/solidjs-email-font": "workspace:*",

@@ -30,6 +30,9 @@ Port essential email components and Tailwind CSS integration from react-email to
 13. [x] Create dev server (@solidjs-email/dev-server)
 14. [x] Add Font component (@solidjs-email/font) - 11 tests
 15. [x] Add Markdown component (@solidjs-email/markdown) - 15 tests
+16. [x] Add CodeInline component (@solidjs-email/code-inline) - 8 tests
+17. [x] Add CodeBlock component (@solidjs-email/code-block) - 8 tests
+18. [x] Add GitHub Actions CI workflow
 
 ## Context
 
@@ -46,13 +49,14 @@ Following react-email's approach:
 - Use `children()` helper for child traversal
 
 ## Acceptance Criteria
-- [x] All packages build successfully (20 packages + examples)
+- [x] All packages build successfully (22 packages + examples)
 - [x] Tailwind classes get inlined as styles (tested)
 - [x] Non-inlinable classes (media queries) go to `<style>` tag (tested)
-- [x] Tests pass (125 tests across 18 packages)
+- [x] Tests pass (141 tests across 20 packages)
 - [x] Dev server working with hot reload
+- [x] GitHub Actions CI configured
 
 ## Remaining Work
-- [ ] Consider adding CodeBlock, CodeInline components
+- [ ] Create more example email templates
+- [ ] Publish new packages to npm (code-inline, code-block)
 - [ ] Consider adding Table component
-- [ ] Publish to npm
