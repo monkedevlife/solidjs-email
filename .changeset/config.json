@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@solidjs-email/dev-server", "@examples/default", "@examples/tailwindv4"]
+  "ignore": ["@examples/default", "@examples/tailwindv4"]
 }
