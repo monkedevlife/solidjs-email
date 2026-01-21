@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-email/row",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Row component for SolidJS email templates",
   "sideEffects": false,
   "main": "./dist/index.js",

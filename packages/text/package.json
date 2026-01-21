@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-email/text",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Text component for SolidJS email templates",
   "sideEffects": false,
   "main": "./dist/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-email/tailwind",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A SolidJS component to wrap emails with Tailwind CSS",
   "sideEffects": false,
   "main": "./dist/index.js",

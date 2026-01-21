@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-email/body",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Body component for SolidJS email templates",
   "sideEffects": false,
   "main": "./dist/index.js",

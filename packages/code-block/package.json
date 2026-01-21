@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-email/code-block",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Code block component with syntax highlighting for SolidJS email templates",
   "sideEffects": false,
   "main": "./dist/index.js",

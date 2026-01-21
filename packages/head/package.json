@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-email/head",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Head component for SolidJS email templates",
   "sideEffects": false,
   "main": "./dist/index.js",
