@@ -1,6 +1,6 @@
 # Monorepo Setup Guide
 
-This guide explains how to install and use solidjs-email in a Turborepo (or similar) monorepo.
+This guide explains how to install and use @solidjs-email/main in a Turborepo (or similar) monorepo.
 
 ## Installation
 
@@ -8,15 +8,15 @@ You have two options for installation:
 
 ### Option 1: Main Package (Recommended)
 
-Install the main `solidjs-email` package which includes everything:
+Install the main `@solidjs-email/main` package which includes everything:
 
 ```bash
 # Using pnpm (recommended for Turborepo)
-pnpm add solidjs-email solid-js --filter your-app-name
+pnpm add @solidjs-email/main solid-js --filter your-app-name
 
 # Or from the package directory
 cd apps/your-app
-pnpm add solidjs-email solid-js
+pnpm add @solidjs-email/main solid-js
 ```
 
 ### Option 2: Individual Packages
@@ -79,7 +79,7 @@ import {
   Section,
   Tailwind,
   Text,
-} from 'solidjs-email';
+} from '@solidjs-email/main';
 
 export const WelcomeEmail = (props: { name: string }) => (
   <Html>
@@ -112,7 +112,7 @@ export const WelcomeEmail = (props: { name: string }) => (
 ## Render and Send Emails
 
 ```tsx
-import { render } from 'solidjs-email';
+import { render } from '@solidjs-email/main';
 import { WelcomeEmail } from './emails/welcome';
 
 // In your API route or server function
@@ -146,7 +146,7 @@ If you want to share email templates across multiple apps, create a dedicated pa
     "build": "tsup src/index.ts --format esm,cjs --dts"
   },
   "dependencies": {
-    "solidjs-email": "^0.0.1"
+    "@solidjs-email/main": "^1.0.0"
   },
   "peerDependencies": {
     "solid-js": "^1.9.0"
@@ -202,7 +202,7 @@ const htmlWithTailwind = await render(() => <MyEmail />, {
 
 | Package | Description |
 |---------|-------------|
-| `solidjs-email` | All components + render utilities |
+| `@solidjs-email/main` | All components + render utilities |
 
 ### Individual Packages
 

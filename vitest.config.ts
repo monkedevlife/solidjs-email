@@ -37,7 +37,7 @@ export default defineConfig({
       '@solidjs-email/dev-server': resolve(__dirname, 'packages/dev-server/src/index.ts'),
       '@solidjs-email/font': resolve(__dirname, 'packages/font/src/index.ts'),
       '@solidjs-email/markdown': resolve(__dirname, 'packages/markdown/src/index.ts'),
-      'solidjs-email': resolve(__dirname, 'packages/solidjs-email/src/index.ts'),
+      '@solidjs-email/main': resolve(__dirname, 'packages/solidjs-email/src/index.ts'),
     },
   },
 });

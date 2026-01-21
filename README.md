@@ -2,8 +2,8 @@
 <div align="center">Build emails with SolidJS components.<br />A port of react-email for the SolidJS ecosystem.</div>
 <br />
 <div align="center">
-<a href="https://www.npmjs.com/package/solidjs-email">
-  <img src="https://img.shields.io/npm/v/solidjs-email.svg" alt="npm version" />
+<a href="https://www.npmjs.com/package/@solidjs-email/main">
+  <img src="https://img.shields.io/npm/v/@solidjs-email/main.svg" alt="npm version" />
 </a>
 <a href="https://github.com/solidjs-email/solidjs-email/blob/main/LICENSE">
   <img src="https://img.shields.io/npm/l/solidjs-email.svg" alt="license" />
@@ -23,13 +23,13 @@ Build responsive emails with Tailwind CSS support without fighting email client 
 
 ```bash
 # Install the main package (recommended)
-npm install solidjs-email solid-js
+npm install @solidjs-email/main solid-js
 
 # Or with pnpm
-pnpm add solidjs-email solid-js
+pnpm add @solidjs-email/main solid-js
 
 # Or with yarn
-yarn add solidjs-email solid-js
+yarn add @solidjs-email/main solid-js
 ```
 
 ### Individual Packages
@@ -55,7 +55,7 @@ import {
   Section,
   Tailwind,
   Text,
-} from 'solidjs-email';
+} from '@solidjs-email/main';
 
 const WelcomeEmail = (props: { name: string }) => (
   <Html>
@@ -91,7 +91,7 @@ const html = await render(() => <WelcomeEmail name="John" />);
 ## Rendering Options
 
 ```tsx
-import { render } from 'solidjs-email';
+import { render } from '@solidjs-email/main';
 
 // Basic render
 const html = await render(() => <MyEmail />);
@@ -179,7 +179,7 @@ await transporter.sendMail({
 | Package | Description |
 |---------|-------------|
 | [`render`](./packages/render) | HTML rendering utilities |
-| [`solidjs-email`](./packages/solidjs-email) | Main package (all components + render) |
+| [`@solidjs-email/main`](./packages/solidjs-email) | Main package (all components + render) |
 | [`components`](./packages/components) | All components bundle |
 
 ## Tailwind CSS Support
@@ -187,7 +187,7 @@ await transporter.sendMail({
 The `Tailwind` component automatically converts Tailwind classes to inline styles for email compatibility:
 
 ```tsx
-import { Tailwind, Text } from 'solidjs-email';
+import { Tailwind, Text } from '@solidjs-email/main';
 
 <Tailwind>
   <Text class="text-lg font-bold text-blue-600">
@@ -199,7 +199,7 @@ import { Tailwind, Text } from 'solidjs-email';
 ## Custom Fonts
 
 ```tsx
-import { Font, Head, Html } from 'solidjs-email';
+import { Font, Head, Html } from '@solidjs-email/main';
 
 <Html>
   <Head>
@@ -219,7 +219,7 @@ import { Font, Head, Html } from 'solidjs-email';
 ## Markdown Support
 
 ```tsx
-import { Markdown } from 'solidjs-email';
+import { Markdown } from '@solidjs-email/main';
 
 <Markdown>
   # Hello World
@@ -234,7 +234,7 @@ import { Markdown } from 'solidjs-email';
 ## Code Blocks
 
 ```tsx
-import { CodeBlock, CodeInline } from 'solidjs-email';
+import { CodeBlock, CodeInline } from '@solidjs-email/main';
 
 // Syntax highlighted code block
 <CodeBlock language="typescript" theme="dracula">
@@ -244,7 +244,7 @@ console.log(greeting);`}
 
 // Inline code
 <Text>
-  Use <CodeInline>npm install solidjs-email</CodeInline> to install.
+  Use <CodeInline>npm install @solidjs-email/main</CodeInline> to install.
 </Text>
 ```
 
@@ -257,7 +257,7 @@ import type {
   ButtonProps, 
   TextProps,
   ContainerProps 
-} from 'solidjs-email';
+} from '@solidjs-email/main';
 ```
 
 ## Why SolidJS?

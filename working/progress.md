@@ -5,6 +5,58 @@ The agent reads this after compaction to restore context.
 
 ---
 
+## [2026-01-21 22:56] Updated Documentation for @solidjs-email/main
+
+### Completed
+- Updated **README.md** to use `@solidjs-email/main` instead of `solidjs-email`:
+  - npm badge URL
+  - Installation commands
+  - Import statements
+  - Package table reference
+  
+- Updated **docs/monorepo-setup.md** to use `@solidjs-email/main`:
+  - Installation instructions
+  - Import statements
+  - Package dependency examples
+  - Package table
+  
+- Updated **vitest.config.ts** alias from `solidjs-email` to `@solidjs-email/main`
+
+### Current State
+- **25 workspace projects** building successfully
+- **145 tests passing** across 20 packages
+- Main package is `@solidjs-email/main` (scoped under npm org)
+- All documentation updated to reflect new package name
+
+### Package Naming
+- Main package: `@solidjs-email/main` (scoped, publishes to @solidjs-email org)
+- Individual packages: `@solidjs-email/body`, `@solidjs-email/button`, etc.
+- All packages version `1.0.0`
+
+### Usage
+```bash
+# Install main package
+npm install @solidjs-email/main solid-js
+
+# Or install individual packages
+npm install @solidjs-email/render @solidjs-email/button solid-js
+```
+
+```tsx
+// Using main package
+import { render, Button, Text, Container } from '@solidjs-email/main';
+
+// Using individual packages
+import { render } from '@solidjs-email/render';
+import { Button } from '@solidjs-email/button';
+```
+
+### Next Steps
+- Publish packages to npm: `pnpm -r publish --access public`
+- Update any remaining references
+
+---
+
 ## [2026-01-21 19:25] Created solidjs-email Main Package & Renamed to @solidjs-email Org
 
 ### Completed
