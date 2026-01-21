@@ -35,6 +35,7 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
+    "@solidjs-email/components": "workspace:*",
     "@solidjs-email/render": "workspace:*",
     "cac": "^6.7.14",
     "chokidar": "^4.0.0",
@@ -44,7 +45,6 @@
     "vite-plugin-solid": "^2.11.0"
   },
   "devDependencies": {
-    "@solidjs-email/components": "workspace:*",
     "@types/node": "^22.0.0",
     "solid-js": "^1.9.0",
     "typescript": "^5.8.0",

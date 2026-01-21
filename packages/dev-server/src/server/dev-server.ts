@@ -17,16 +17,21 @@ interface EmailTemplate {
   path: string;
 }
 
-function findPackagesDir(): string {
+interface PackagesLocation {
+  dir: string;
+  isMonorepo: boolean;
+}
+
+function findPackagesDir(): PackagesLocation {
   let dir = process.cwd();
   while (dir !== '/') {
     const packagesPath = path.join(dir, 'packages');
     if (fs.existsSync(packagesPath) && fs.existsSync(path.join(packagesPath, 'render'))) {
-      return packagesPath;
+      return { dir: packagesPath, isMonorepo: true };
     }
     dir = path.dirname(dir);
   }
-  return path.join(process.cwd(), 'node_modules', '@solidjs-email');
+  return { dir: '', isMonorepo: false };
 }
 
 function getEmailTemplates(emailsDir: string): EmailTemplate[] {
@@ -235,8 +240,37 @@ export async function startDevServer(options: DevServerOptions): Promise<void> {
 
   console.log(pc.dim('Starting Vite server...'));
 
-  const packagesDir = findPackagesDir();
-  console.log(pc.dim(`Using packages from: ${packagesDir}`));
+  const packages = findPackagesDir();
+  
+  const resolveAlias = packages.isMonorepo
+    ? {
+        '@solidjs-email/render': path.join(packages.dir, 'render/src/index.ts'),
+        '@solidjs-email/html': path.join(packages.dir, 'html/src/index.ts'),
+        '@solidjs-email/head': path.join(packages.dir, 'head/src/index.ts'),
+        '@solidjs-email/body': path.join(packages.dir, 'body/src/index.ts'),
+        '@solidjs-email/tailwind': path.join(packages.dir, 'tailwind/src/index.ts'),
+        '@solidjs-email/button': path.join(packages.dir, 'button/src/index.ts'),
+        '@solidjs-email/container': path.join(packages.dir, 'container/src/index.ts'),
+        '@solidjs-email/section': path.join(packages.dir, 'section/src/index.ts'),
+        '@solidjs-email/row': path.join(packages.dir, 'row/src/index.ts'),
+        '@solidjs-email/column': path.join(packages.dir, 'column/src/index.ts'),
+        '@solidjs-email/text': path.join(packages.dir, 'text/src/index.ts'),
+        '@solidjs-email/link': path.join(packages.dir, 'link/src/index.ts'),
+        '@solidjs-email/heading': path.join(packages.dir, 'heading/src/index.ts'),
+        '@solidjs-email/img': path.join(packages.dir, 'img/src/index.ts'),
+        '@solidjs-email/hr': path.join(packages.dir, 'hr/src/index.ts'),
+        '@solidjs-email/preview': path.join(packages.dir, 'preview/src/index.ts'),
+        '@solidjs-email/font': path.join(packages.dir, 'font/src/index.ts'),
+        '@solidjs-email/markdown': path.join(packages.dir, 'markdown/src/index.ts'),
+        '@solidjs-email/components': path.join(packages.dir, 'components/src/index.ts'),
+      }
+    : undefined;
+
+  if (packages.isMonorepo) {
+    console.log(pc.dim(`Using packages from: ${packages.dir}`));
+  } else {
+    console.log(pc.dim('Using packages from node_modules'));
+  }
 
   const vite = await createViteServer({
     server: { middlewareMode: true },
@@ -244,27 +278,7 @@ export async function startDevServer(options: DevServerOptions): Promise<void> {
     logLevel: 'error',
     plugins: [solidPlugin({ ssr: true })],
     resolve: {
-      alias: {
-        '@solidjs-email/render': path.join(packagesDir, 'render/src/index.ts'),
-        '@solidjs-email/html': path.join(packagesDir, 'html/src/index.ts'),
-        '@solidjs-email/head': path.join(packagesDir, 'head/src/index.ts'),
-        '@solidjs-email/body': path.join(packagesDir, 'body/src/index.ts'),
-        '@solidjs-email/tailwind': path.join(packagesDir, 'tailwind/src/index.ts'),
-        '@solidjs-email/button': path.join(packagesDir, 'button/src/index.ts'),
-        '@solidjs-email/container': path.join(packagesDir, 'container/src/index.ts'),
-        '@solidjs-email/section': path.join(packagesDir, 'section/src/index.ts'),
-        '@solidjs-email/row': path.join(packagesDir, 'row/src/index.ts'),
-        '@solidjs-email/column': path.join(packagesDir, 'column/src/index.ts'),
-        '@solidjs-email/text': path.join(packagesDir, 'text/src/index.ts'),
-        '@solidjs-email/link': path.join(packagesDir, 'link/src/index.ts'),
-        '@solidjs-email/heading': path.join(packagesDir, 'heading/src/index.ts'),
-        '@solidjs-email/img': path.join(packagesDir, 'img/src/index.ts'),
-        '@solidjs-email/hr': path.join(packagesDir, 'hr/src/index.ts'),
-        '@solidjs-email/preview': path.join(packagesDir, 'preview/src/index.ts'),
-        '@solidjs-email/font': path.join(packagesDir, 'font/src/index.ts'),
-        '@solidjs-email/markdown': path.join(packagesDir, 'markdown/src/index.ts'),
-        '@solidjs-email/components': path.join(packagesDir, 'components/src/index.ts'),
-      },
+      alias: resolveAlias,
     },
   });
 
