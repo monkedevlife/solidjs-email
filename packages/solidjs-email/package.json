@@ -1,5 +1,5 @@
 {
-  "name": "@solidjs-email/solidjs-email",
+  "name": "solidjs-email",
   "version": "0.0.1",
   "description": "Build and send emails using SolidJS components",
   "sideEffects": false,
