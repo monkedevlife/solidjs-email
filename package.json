@@ -8,10 +8,14 @@
 		"dev": "pnpm --filter @solidjs-email/dev-server exec vite-node src/cli.ts --dir ../../examples/emails",
 		"lint": "biome check",
 		"lint:fix": "biome check --write .",
-		"test": "pnpm -r test"
+		"test": "pnpm -r test",
+		"changeset": "changeset",
+		"version": "changeset version",
+		"release": "pnpm build && pnpm -r publish --access public"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.0.0",
+		"@changesets/cli": "^2.29.8",
 		"@types/node": "^22.0.0",
 		"rolldown-plugin-solid": "^0.2.1",
 		"solid-js": "^1.9.0",

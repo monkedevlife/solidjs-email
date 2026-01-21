@@ -4,5 +4,12 @@ import { defineConfig } from 'tsdown';
 export default defineConfig({
   format: ['esm'],
   dts: true,
-  plugins: [solid()],
+  plugins: [
+    solid({
+      solid: {
+        generate: 'ssr',
+        hydratable: false,
+      },
+    }),
+  ],
 });

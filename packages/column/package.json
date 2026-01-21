@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-email/column",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Column component for SolidJS email templates",
   "sideEffects": false,
   "main": "./dist/index.js",

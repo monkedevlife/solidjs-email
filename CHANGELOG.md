@@ -1,47 +1,30 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+This project uses [changesets](https://github.com/changesets/changesets) for versioning.
 
-## [1.0.1] - 2026-01-21
+See individual package changelogs for detailed changes:
+- [@solidjs-email/main](./packages/solidjs-email/CHANGELOG.md)
+- [@solidjs-email/render](./packages/render/CHANGELOG.md)
+- [@solidjs-email/body](./packages/body/CHANGELOG.md)
+- [@solidjs-email/button](./packages/button/CHANGELOG.md)
+- [@solidjs-email/container](./packages/container/CHANGELOG.md)
+- [@solidjs-email/tailwind](./packages/tailwind/CHANGELOG.md)
+- And more in `packages/*/CHANGELOG.md`
 
-### Fixed
+## Quick Summary
 
-- **JSX Transform**: All component packages now properly use `rolldown-plugin-solid` to compile JSX for SolidJS runtime (`solid-js/web`) instead of the incorrect React-style JSX runtime (`solid-js/jsx-runtime`)
-- **Build Configuration**: Created shared `tsdown.config.ts` at monorepo root with SolidJS plugin for consistent builds across all packages
+### 1.0.2 (2026-01-21)
 
-### Changed
+- **Fixed**: SolidJS SSR compilation mode - configure `rolldown-plugin-solid` with `generate: 'ssr'`
 
-- Updated all package build scripts to use the shared tsdown configuration
-- Added `"type": "module"` to root `package.json`
+### 1.0.1 (2026-01-21)
 
-### Packages Updated
+- **Fixed**: JSX transform - all packages now use `rolldown-plugin-solid` for proper SolidJS compilation
+- **Fixed**: Package exports - corrected ESM/CJS file extensions
 
-All packages bumped to 1.0.1:
-- @solidjs-email/body
-- @solidjs-email/button
-- @solidjs-email/code-block
-- @solidjs-email/code-inline
-- @solidjs-email/column
-- @solidjs-email/container
-- @solidjs-email/components
-- @solidjs-email/dev-server
-- @solidjs-email/font
-- @solidjs-email/head
-- @solidjs-email/heading
-- @solidjs-email/hr
-- @solidjs-email/html
-- @solidjs-email/img
-- @solidjs-email/link
-- @solidjs-email/markdown
-- @solidjs-email/preview
-- @solidjs-email/render
-- @solidjs-email/row
-- @solidjs-email/section
-- @solidjs-email/tailwind
-- @solidjs-email/text
+### 1.0.0 (2026-01-21)
 
-@solidjs-email/main bumped to 1.0.2
-
-## [1.0.0] - Initial Release
-
-- Initial release of all solidjs-email packages
+- Initial release with 22 packages
+- Core components: Body, Button, Container, Section, Row, Column, Text, Link, Heading, Img, Hr, Preview
+- Advanced components: Tailwind, Markdown, Font, CodeBlock, CodeInline
+- Utilities: render, Html, Head
