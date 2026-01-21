@@ -1,57 +1,67 @@
-# Task: Create solidjs-email Main Package and Rename to @solidjs-email Org
+# Task: Refactor Dev Server to Use SolidStart
+
+## Status: COMPLETED ✅
 
 ## Objective
-Create a main `solidjs-email` package that re-exports all components, similar to `react-email`, and rename all packages from `@monkedevlife/solidjs-email-*` to `@solidjs-email/*`.
+Refactor the @solidjs-email/dev-server package to use SolidStart instead of raw HTML strings for the preview UI.
 
-## Plan
-1. [x] Create packages/solidjs-email/ directory structure
-2. [x] Create package.json for solidjs-email main package
-3. [x] Create src/index.ts re-exporting all components and render
-4. [x] Create src/components.ts for components-only export
-5. [x] Create tsconfig.json for the package
-6. [x] Update all package names from @monkedevlife/solidjs-email-* to @solidjs-email/*
-7. [x] Update all imports in source files
-8. [x] Update vitest.config.ts aliases
-9. [x] Update example projects
-10. [x] Verify build passes
-11. [x] Verify tests pass
-12. [x] Add README for solidjs-email package
+## Completed Steps
 
-## Completed Work
+1. ✅ Created SolidStart app structure
+   - `app.config.ts` - Vinxi/SolidStart configuration
+   - `src/entry-client.tsx` - Client entry point
+   - `src/entry-server.tsx` - Server entry point with document template
+   
+2. ✅ Created app.tsx and Tailwind CSS setup
+   - `src/app.tsx` - Root component with Router and Suspense
+   - `src/app.css` - Dark theme CSS variables + Tailwind imports
 
-### New Package Structure
+3. ✅ Created routes
+   - `src/routes/index.tsx` - Home page with welcome message and template list
+   - `src/routes/preview/[slug].tsx` - Preview page with view toggle
+
+4. ✅ Created UI components (inline in routes)
+   - Sidebar - Template list with active highlighting
+   - Topbar - Template name, Preview/HTML toggle, Copy button
+   - PreviewFrame - Iframe with email HTML
+   - CodeView - Monospace HTML source display
+
+5. ✅ Created lib utilities
+   - `src/lib/emails.ts` - Scans directory for .tsx/.jsx email files
+   - `src/lib/render.ts` - Renders email component to HTML string
+
+6. ✅ Updated CLI
+   - Changed from custom Vite server to vinxi dev server
+   - Updated package.json scripts
+
+7. ✅ Tested end-to-end
+   - Home page showing template list
+   - Email preview working (welcome, verification-code)
+   - HTML view working
+   - Preview/HTML toggle working
+   - Copy to clipboard working
+   - Template switching working
+
+## Dev Server Features
+- Dark theme UI (similar to react-email)
+- Template sidebar with active highlighting
+- Email preview in iframe
+- HTML source view
+- Copy HTML button
+- File-based routing
+
+## Usage
+```bash
+# From project root
+pnpm dev
+
+# Or with custom emails directory
+cd packages/dev-server
+EMAILS_DIR=/path/to/emails pnpm exec vinxi dev --port 6008
 ```
-packages/solidjs-email/
-├── src/
-│   ├── index.ts       # Re-exports everything (components + render)
-│   └── components.ts  # Re-exports components only
-├── package.json
-├── tsconfig.json
-└── README.md
-```
 
-### Package Naming Convention
-- Main package: `solidjs-email` (unprefixed for easy installation)
-- Individual packages: `@solidjs-email/<component>`
-- Repository: `https://github.com/solidjs-email/solidjs-email.git`
-
-### Files Updated
-- All 22 packages' package.json files
-- All source files with @monkedevlife imports
-- vitest.config.ts
-- examples/default/package.json
-- examples/tailwindv4/package.json
-- Various vite.config.ts files
-- Various README.md files
-
-## Acceptance Criteria
-- [x] Main solidjs-email package exists and builds
-- [x] All packages renamed to @solidjs-email/* scope
-- [x] All imports updated
-- [x] All tests pass (141 tests)
-- [x] All packages build successfully
-
-## Next Steps
-- Set up @solidjs-email npm organization
-- Publish packages to npm
-- Update project README with new package names
+## Future Enhancements
+- Add file watcher for hot reload on template changes
+- Add syntax highlighting for HTML view
+- Add resizable preview frame
+- Add send test email functionality

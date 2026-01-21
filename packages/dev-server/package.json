@@ -1,29 +1,21 @@
 {
   "name": "@solidjs-email/dev-server",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Development server for previewing SolidJS email templates",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "bin": {
     "solidjs-email": "./dist/cli.js"
   },
   "files": [
-    "dist/**"
+    "dist/**",
+    "src/**",
+    "app.config.ts"
   ],
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
-  },
   "license": "MIT",
   "scripts": {
-    "build": "tsdown src/index.ts src/cli.ts",
-    "build:watch": "tsdown src/index.ts src/cli.ts --watch",
-    "dev": "vite-node src/cli.ts -- --dir ../../../examples/emails"
+    "build": "tsdown src/cli.ts src/index.ts --format esm",
+    "build:watch": "tsdown src/cli.ts src/index.ts --format esm --watch",
+    "dev": "EMAILS_DIR=../../examples/default/emails vinxi dev --port 6008"
   },
   "keywords": [
     "solidjs",
@@ -37,21 +29,19 @@
   "dependencies": {
     "@solidjs-email/components": "workspace:*",
     "@solidjs-email/render": "workspace:*",
+    "@solidjs/router": "^0.15.4",
+    "@solidjs/start": "^1.2.1",
+    "@tailwindcss/vite": "^4.1.18",
     "cac": "^6.7.14",
-    "chokidar": "^4.0.0",
     "picocolors": "^1.1.0",
-    "sirv": "^3.0.0",
-    "vite": "^6.0.0",
-    "vite-plugin-solid": "^2.11.0"
+    "solid-js": "^1.9.0",
+    "tailwindcss": "^4.1.18",
+    "vinxi": "^0.5.11"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
-    "solid-js": "^1.9.0",
     "typescript": "^5.8.0",
-    "vite-node": "^5.0.0"
-  },
-  "peerDependencies": {
-    "solid-js": "^1.9.0"
+    "vite": "^6.4.1"
   },
   "author": "solidjs-email",
   "repository": {

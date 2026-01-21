@@ -1,1 +1,1 @@
-export { startDevServer, type DevServerOptions } from './server/dev-server';
+export const version = '1.0.0';

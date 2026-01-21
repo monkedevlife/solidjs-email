@@ -5,6 +5,77 @@ The agent reads this after compaction to restore context.
 
 ---
 
+## [2026-01-22 00:15] Refactored Dev Server to Use SolidStart
+
+### Completed
+- **Refactored @solidjs-email/dev-server** to use SolidStart instead of raw HTML strings:
+  - Created `app.config.ts` with SolidStart/Vinxi configuration
+  - Created `src/app.tsx` as root app component with Router
+  - Created `src/app.css` with dark theme CSS variables and Tailwind
+  - Created `src/entry-client.tsx` and `src/entry-server.tsx` entry points
+  - Created file-based routes:
+    - `src/routes/index.tsx` - Home page with template list
+    - `src/routes/preview/[slug].tsx` - Email preview page with view toggle
+  - Created lib utilities:
+    - `src/lib/emails.ts` - Scans directory for email templates
+    - `src/lib/render.ts` - Renders email components to HTML
+  - Updated CLI to use vinxi dev server
+
+### Dev Server Features
+- **Dark theme UI** with sidebar and main content area
+- **Template sidebar** - Lists all .tsx/.jsx files from emails directory
+- **Email preview** - Renders email in iframe with white background
+- **HTML view** - Shows rendered HTML source code with monospace font
+- **Copy HTML button** - Copies rendered HTML to clipboard
+- **Preview/HTML toggle** - Switch between visual preview and HTML source
+- **Active template highlighting** - Blue highlight for selected template
+
+### Technical Stack
+- SolidStart 1.2.1 with Vinxi
+- @solidjs/router for file-based routing
+- Tailwind CSS v4 via @tailwindcss/vite plugin
+- Server functions with `'use server'` for email loading/rendering
+
+### Files Created/Modified
+- `packages/dev-server/app.config.ts` - SolidStart config
+- `packages/dev-server/src/app.tsx` - Root component
+- `packages/dev-server/src/app.css` - Tailwind + dark theme
+- `packages/dev-server/src/entry-client.tsx` - Client entry
+- `packages/dev-server/src/entry-server.tsx` - Server entry
+- `packages/dev-server/src/routes/index.tsx` - Home route
+- `packages/dev-server/src/routes/preview/[slug].tsx` - Preview route
+- `packages/dev-server/src/lib/emails.ts` - Email scanning utilities
+- `packages/dev-server/src/lib/render.ts` - Email rendering
+- `packages/dev-server/src/cli.ts` - Updated CLI
+- `packages/dev-server/package.json` - Updated dependencies and scripts
+
+### Usage
+```bash
+# From project root
+pnpm dev
+
+# From dev-server package
+cd packages/dev-server
+EMAILS_DIR=../../examples/default/emails pnpm exec vinxi dev --port 6008
+
+# Visit http://localhost:6008
+```
+
+### Current State
+- Dev server fully functional with SolidStart
+- Both email templates (welcome, verification-code) rendering correctly
+- Preview and HTML views working
+- Copy to clipboard functionality working
+- Template switching via sidebar working
+
+### Next Steps
+- Add file watcher for hot reload on template changes
+- Consider adding syntax highlighting for HTML view
+- Consider adding resizable preview frame
+- Consider adding send test email functionality
+
+---
+
 ## [2026-01-21 22:56] Updated Documentation for @solidjs-email/main
 
 ### Completed
