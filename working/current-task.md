@@ -1,6 +1,6 @@
 # Task: Refactor Dev Server to Use SolidStart
 
-## Status: COMPLETED ✅
+## Status: COMPLETED & COMMITTED ✅
 
 ## Objective
 Refactor the @solidjs-email/dev-server package to use SolidStart instead of raw HTML strings for the preview UI.
