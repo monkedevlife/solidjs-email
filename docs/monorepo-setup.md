@@ -4,15 +4,27 @@ This guide explains how to install and use solidjs-email in a Turborepo (or simi
 
 ## Installation
 
-In your Turborepo app/package that needs email functionality:
+You have two options for installation:
+
+### Option 1: Main Package (Recommended)
+
+Install the main `solidjs-email` package which includes everything:
 
 ```bash
 # Using pnpm (recommended for Turborepo)
-pnpm add @solidjs-email/components solid-js --filter your-app-name
+pnpm add solidjs-email solid-js --filter your-app-name
 
 # Or from the package directory
 cd apps/your-app
-pnpm add @solidjs-email/components solid-js
+pnpm add solidjs-email solid-js
+```
+
+### Option 2: Individual Packages
+
+Install only the packages you need:
+
+```bash
+pnpm add @solidjs-email/render @solidjs-email/button @solidjs-email/container solid-js --filter your-app-name
 ```
 
 ## Project Structure
@@ -67,7 +79,7 @@ import {
   Section,
   Tailwind,
   Text,
-} from '@solidjs-email/components';
+} from 'solidjs-email';
 
 export const WelcomeEmail = (props: { name: string }) => (
   <Html>
@@ -100,7 +112,7 @@ export const WelcomeEmail = (props: { name: string }) => (
 ## Render and Send Emails
 
 ```tsx
-import { render } from '@solidjs-email/components';
+import { render } from 'solidjs-email';
 import { WelcomeEmail } from './emails/welcome';
 
 // In your API route or server function
@@ -134,7 +146,7 @@ If you want to share email templates across multiple apps, create a dedicated pa
     "build": "tsup src/index.ts --format esm,cjs --dts"
   },
   "dependencies": {
-    "@solidjs-email/components": "^0.0.1"
+    "solidjs-email": "^0.0.1"
   },
   "peerDependencies": {
     "solid-js": "^1.9.0"
@@ -175,4 +187,45 @@ const prettyHtml = await render(() => <MyEmail />, { pretty: true });
 
 // Plain text version (for email fallback)
 const plainText = await render(() => <MyEmail />, { plainText: true });
+
+// With Tailwind configuration
+const htmlWithTailwind = await render(() => <MyEmail />, {
+  tailwind: {
+    config: { theme: { extend: {} } },
+  },
+});
 ```
+
+## Available Packages
+
+### Main Package
+
+| Package | Description |
+|---------|-------------|
+| `solidjs-email` | All components + render utilities |
+
+### Individual Packages
+
+| Package | Description |
+|---------|-------------|
+| `@solidjs-email/render` | HTML rendering utilities |
+| `@solidjs-email/html` | Html wrapper component |
+| `@solidjs-email/head` | Head component |
+| `@solidjs-email/body` | Body component |
+| `@solidjs-email/button` | Button component |
+| `@solidjs-email/container` | Container component |
+| `@solidjs-email/section` | Section component |
+| `@solidjs-email/row` | Row component |
+| `@solidjs-email/column` | Column component |
+| `@solidjs-email/text` | Text paragraph |
+| `@solidjs-email/link` | Link anchor |
+| `@solidjs-email/heading` | Heading h1-h6 |
+| `@solidjs-email/img` | Image component |
+| `@solidjs-email/hr` | Horizontal rule |
+| `@solidjs-email/preview` | Preview text |
+| `@solidjs-email/font` | Custom fonts |
+| `@solidjs-email/markdown` | Markdown renderer |
+| `@solidjs-email/code-block` | Syntax highlighted code |
+| `@solidjs-email/code-inline` | Inline code |
+| `@solidjs-email/tailwind` | Tailwind CSS support |
+| `@solidjs-email/components` | All components (barrel export) |

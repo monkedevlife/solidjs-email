@@ -2,11 +2,11 @@
 <div align="center">Build emails with SolidJS components.<br />A port of react-email for the SolidJS ecosystem.</div>
 <br />
 <div align="center">
-<a href="https://www.npmjs.com/package/@solidjs-email/components">
-  <img src="https://img.shields.io/npm/v/@solidjs-email/components.svg" alt="npm version" />
+<a href="https://www.npmjs.com/package/solidjs-email">
+  <img src="https://img.shields.io/npm/v/solidjs-email.svg" alt="npm version" />
 </a>
 <a href="https://github.com/solidjs-email/solidjs-email/blob/main/LICENSE">
-  <img src="https://img.shields.io/npm/l/@solidjs-email/components.svg" alt="license" />
+  <img src="https://img.shields.io/npm/l/solidjs-email.svg" alt="license" />
 </a>
 </div>
 
@@ -22,14 +22,22 @@ Build responsive emails with Tailwind CSS support without fighting email client 
 ## Installation
 
 ```bash
-# Install all components (recommended)
-npm install @solidjs-email/components
+# Install the main package (recommended)
+npm install solidjs-email solid-js
 
 # Or with pnpm
-pnpm add @solidjs-email/components
+pnpm add solidjs-email solid-js
 
 # Or with yarn
-yarn add @solidjs-email/components
+yarn add solidjs-email solid-js
+```
+
+### Individual Packages
+
+You can also install individual packages if you prefer:
+
+```bash
+npm install @solidjs-email/render @solidjs-email/button @solidjs-email/container solid-js
 ```
 
 ## Quick Start
@@ -43,11 +51,11 @@ import {
   Heading,
   Html,
   Preview,
+  render,
   Section,
   Tailwind,
   Text,
-} from '@solidjs-email/components';
-import { render } from '@solidjs-email/components';
+} from 'solidjs-email';
 
 const WelcomeEmail = (props: { name: string }) => (
   <Html>
@@ -83,7 +91,7 @@ const html = await render(() => <WelcomeEmail name="John" />);
 ## Rendering Options
 
 ```tsx
-import { render } from '@solidjs-email/components';
+import { render } from 'solidjs-email';
 
 // Basic render
 const html = await render(() => <MyEmail />);
@@ -93,6 +101,13 @@ const prettyHtml = await render(() => <MyEmail />, { pretty: true });
 
 // Render to plain text
 const plainText = await render(() => <MyEmail />, { plainText: true });
+
+// With Tailwind configuration
+const htmlWithTailwind = await render(() => <MyEmail />, {
+  tailwind: {
+    config: { theme: { extend: {} } },
+  },
+});
 ```
 
 ## Sending Emails
@@ -101,7 +116,7 @@ const plainText = await render(() => <MyEmail />, { plainText: true });
 
 ```tsx
 import { Resend } from 'resend';
-import { render } from '@solidjs-email/components';
+import { render } from 'solidjs-email';
 import { WelcomeEmail } from './emails/welcome';
 
 const resend = new Resend('re_123456789');
@@ -120,7 +135,7 @@ await resend.emails.send({
 
 ```tsx
 import nodemailer from 'nodemailer';
-import { render } from '@solidjs-email/components';
+import { render } from 'solidjs-email';
 import { WelcomeEmail } from './emails/welcome';
 
 const transporter = nodemailer.createTransport({ /* config */ });
@@ -137,39 +152,42 @@ await transporter.sendMail({
 
 ## Components
 
-| Component | Description | NPM |
-|-----------|-------------|-----|
-| [`Html`](./packages/html) | Root HTML wrapper | [![npm](https://img.shields.io/npm/v/@solidjs-email/html.svg?label=)](https://www.npmjs.com/package/@solidjs-email/html) |
-| [`Head`](./packages/head) | Email head with meta tags | [![npm](https://img.shields.io/npm/v/@solidjs-email/head.svg?label=)](https://www.npmjs.com/package/@solidjs-email/head) |
-| [`Body`](./packages/body) | Body with table layout | [![npm](https://img.shields.io/npm/v/@solidjs-email/body.svg?label=)](https://www.npmjs.com/package/@solidjs-email/body) |
-| [`Container`](./packages/container) | Centered container | [![npm](https://img.shields.io/npm/v/@solidjs-email/container.svg?label=)](https://www.npmjs.com/package/@solidjs-email/container) |
-| [`Section`](./packages/section) | Table section wrapper | [![npm](https://img.shields.io/npm/v/@solidjs-email/section.svg?label=)](https://www.npmjs.com/package/@solidjs-email/section) |
-| [`Row`](./packages/row) | Table row | [![npm](https://img.shields.io/npm/v/@solidjs-email/row.svg?label=)](https://www.npmjs.com/package/@solidjs-email/row) |
-| [`Column`](./packages/column) | Table column | [![npm](https://img.shields.io/npm/v/@solidjs-email/column.svg?label=)](https://www.npmjs.com/package/@solidjs-email/column) |
-| [`Button`](./packages/button) | CTA button link | [![npm](https://img.shields.io/npm/v/@solidjs-email/button.svg?label=)](https://www.npmjs.com/package/@solidjs-email/button) |
-| [`Text`](./packages/text) | Paragraph text | [![npm](https://img.shields.io/npm/v/@solidjs-email/text.svg?label=)](https://www.npmjs.com/package/@solidjs-email/text) |
-| [`Heading`](./packages/heading) | h1-h6 headings | [![npm](https://img.shields.io/npm/v/@solidjs-email/heading.svg?label=)](https://www.npmjs.com/package/@solidjs-email/heading) |
-| [`Link`](./packages/link) | Anchor link | [![npm](https://img.shields.io/npm/v/@solidjs-email/link.svg?label=)](https://www.npmjs.com/package/@solidjs-email/link) |
-| [`Img`](./packages/img) | Image | [![npm](https://img.shields.io/npm/v/@solidjs-email/img.svg?label=)](https://www.npmjs.com/package/@solidjs-email/img) |
-| [`Hr`](./packages/hr) | Horizontal rule | [![npm](https://img.shields.io/npm/v/@solidjs-email/hr.svg?label=)](https://www.npmjs.com/package/@solidjs-email/hr) |
-| [`Preview`](./packages/preview) | Preview text (hidden) | [![npm](https://img.shields.io/npm/v/@solidjs-email/preview.svg?label=)](https://www.npmjs.com/package/@solidjs-email/preview) |
-| [`Font`](./packages/font) | Custom web fonts | [![npm](https://img.shields.io/npm/v/@solidjs-email/font.svg?label=)](https://www.npmjs.com/package/@solidjs-email/font) |
-| [`Markdown`](./packages/markdown) | Markdown to HTML | [![npm](https://img.shields.io/npm/v/@solidjs-email/markdown.svg?label=)](https://www.npmjs.com/package/@solidjs-email/markdown) |
-| [`Tailwind`](./packages/tailwind) | Tailwind CSS support | [![npm](https://img.shields.io/npm/v/@solidjs-email/tailwind.svg?label=)](https://www.npmjs.com/package/@solidjs-email/tailwind) |
+| Component | Description | Package |
+|-----------|-------------|---------|
+| [`Html`](./packages/html) | Root HTML wrapper | `@solidjs-email/html` |
+| [`Head`](./packages/head) | Email head with meta tags | `@solidjs-email/head` |
+| [`Body`](./packages/body) | Body with table layout | `@solidjs-email/body` |
+| [`Container`](./packages/container) | Centered container | `@solidjs-email/container` |
+| [`Section`](./packages/section) | Table section wrapper | `@solidjs-email/section` |
+| [`Row`](./packages/row) | Table row | `@solidjs-email/row` |
+| [`Column`](./packages/column) | Table column | `@solidjs-email/column` |
+| [`Button`](./packages/button) | CTA button link | `@solidjs-email/button` |
+| [`Text`](./packages/text) | Paragraph text | `@solidjs-email/text` |
+| [`Heading`](./packages/heading) | h1-h6 headings | `@solidjs-email/heading` |
+| [`Link`](./packages/link) | Anchor link | `@solidjs-email/link` |
+| [`Img`](./packages/img) | Image | `@solidjs-email/img` |
+| [`Hr`](./packages/hr) | Horizontal rule | `@solidjs-email/hr` |
+| [`Preview`](./packages/preview) | Preview text (hidden) | `@solidjs-email/preview` |
+| [`Font`](./packages/font) | Custom web fonts | `@solidjs-email/font` |
+| [`Markdown`](./packages/markdown) | Markdown to HTML | `@solidjs-email/markdown` |
+| [`CodeBlock`](./packages/code-block) | Syntax highlighted code | `@solidjs-email/code-block` |
+| [`CodeInline`](./packages/code-inline) | Inline code snippet | `@solidjs-email/code-inline` |
+| [`Tailwind`](./packages/tailwind) | Tailwind CSS support | `@solidjs-email/tailwind` |
 
 ### Utility Packages
 
-| Package | Description | NPM |
-|---------|-------------|-----|
-| [`render`](./packages/render) | HTML rendering utilities | [![npm](https://img.shields.io/npm/v/@solidjs-email/render.svg?label=)](https://www.npmjs.com/package/@solidjs-email/render) |
-| [`components`](./packages/components) | All components bundle | [![npm](https://img.shields.io/npm/v/@solidjs-email/components.svg?label=)](https://www.npmjs.com/package/@solidjs-email/components) |
+| Package | Description |
+|---------|-------------|
+| [`render`](./packages/render) | HTML rendering utilities |
+| [`solidjs-email`](./packages/solidjs-email) | Main package (all components + render) |
+| [`components`](./packages/components) | All components bundle |
 
 ## Tailwind CSS Support
 
 The `Tailwind` component automatically converts Tailwind classes to inline styles for email compatibility:
 
 ```tsx
-import { Tailwind, Text } from '@solidjs-email/components';
+import { Tailwind, Text } from 'solidjs-email';
 
 <Tailwind>
   <Text class="text-lg font-bold text-blue-600">
@@ -181,7 +199,7 @@ import { Tailwind, Text } from '@solidjs-email/components';
 ## Custom Fonts
 
 ```tsx
-import { Font, Head, Html } from '@solidjs-email/components';
+import { Font, Head, Html } from 'solidjs-email';
 
 <Html>
   <Head>
@@ -201,7 +219,7 @@ import { Font, Head, Html } from '@solidjs-email/components';
 ## Markdown Support
 
 ```tsx
-import { Markdown } from '@solidjs-email/components';
+import { Markdown } from 'solidjs-email';
 
 <Markdown>
   # Hello World
@@ -213,6 +231,23 @@ import { Markdown } from '@solidjs-email/components';
 </Markdown>
 ```
 
+## Code Blocks
+
+```tsx
+import { CodeBlock, CodeInline } from 'solidjs-email';
+
+// Syntax highlighted code block
+<CodeBlock language="typescript" theme="dracula">
+  {`const greeting = "Hello, World!";
+console.log(greeting);`}
+</CodeBlock>
+
+// Inline code
+<Text>
+  Use <CodeInline>npm install solidjs-email</CodeInline> to install.
+</Text>
+```
+
 ## TypeScript
 
 All packages include TypeScript definitions:
@@ -222,7 +257,7 @@ import type {
   ButtonProps, 
   TextProps,
   ContainerProps 
-} from '@solidjs-email/components';
+} from 'solidjs-email';
 ```
 
 ## Why SolidJS?
