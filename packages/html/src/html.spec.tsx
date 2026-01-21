@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Html } from './html';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 
 describe('<Html> component', () => {
   it('renders with default lang and dir', async () => {

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Preview } from './preview';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 
 describe('<Preview> component', () => {
   it('renders as a hidden div', async () => {

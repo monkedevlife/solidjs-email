@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 import { CodeBlock, dracula } from './index';
 
 describe('<CodeBlock> component', () => {

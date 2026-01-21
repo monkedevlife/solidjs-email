@@ -10,7 +10,7 @@ import {
   Preview,
   Section,
   Text,
-} from '@monkedevlife/solidjs-email-components';
+} from '@solidjs-email/components';
 
 export interface CustomThemeEmailProps {
   username?: string;

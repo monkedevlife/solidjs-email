@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Row } from './row';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 
 describe('<Row> component', () => {
   it('renders as a table element', async () => {

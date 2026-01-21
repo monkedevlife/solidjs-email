@@ -20,7 +20,7 @@ async function processTailwind(
   options?: TailwindOptions,
 ): Promise<string> {
   try {
-    const { processTailwindInHtml } = await import('@monkedevlife/solidjs-email-tailwind');
+    const { processTailwindInHtml } = await import('@solidjs-email/tailwind');
     return processTailwindInHtml(html, options as Parameters<typeof processTailwindInHtml>[1]);
   } catch {
     return html;

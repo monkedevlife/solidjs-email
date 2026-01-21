@@ -1,19 +1,19 @@
-# @monkedevlife/solidjs-email-render
+# @solidjs-email/render
 
-[![npm version](https://img.shields.io/npm/v/@monkedevlife/solidjs-email-render.svg)](https://www.npmjs.com/package/@monkedevlife/solidjs-email-render)
+[![npm version](https://img.shields.io/npm/v/@solidjs-email/render.svg)](https://www.npmjs.com/package/@solidjs-email/render)
 
 Transform SolidJS components into HTML email templates.
 
 ## Installation
 
 ```bash
-npm install @monkedevlife/solidjs-email-render
+npm install @solidjs-email/render
 ```
 
 ## Usage
 
 ```tsx
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 
 const Email = () => <div>Hello World</div>;
 

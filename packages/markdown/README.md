@@ -1,19 +1,19 @@
-# @monkedevlife/solidjs-email-markdown
+# @solidjs-email/markdown
 
-[![npm version](https://img.shields.io/npm/v/@monkedevlife/solidjs-email-markdown.svg)](https://www.npmjs.com/package/@monkedevlife/solidjs-email-markdown)
+[![npm version](https://img.shields.io/npm/v/@solidjs-email/markdown.svg)](https://www.npmjs.com/package/@solidjs-email/markdown)
 
 Markdown to email-safe HTML for SolidJS emails.
 
 ## Installation
 
 ```bash
-npm install @monkedevlife/solidjs-email-markdown
+npm install @solidjs-email/markdown
 ```
 
 ## Usage
 
 ```tsx
-import { Markdown } from '@monkedevlife/solidjs-email-markdown';
+import { Markdown } from '@solidjs-email/markdown';
 
 <Markdown>
   # Hello World

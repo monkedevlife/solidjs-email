@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Body } from './body';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 
 describe('<Body> component', () => {
   it('renders with table structure for email compatibility', async () => {

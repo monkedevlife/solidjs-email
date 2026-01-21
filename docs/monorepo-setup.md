@@ -8,11 +8,11 @@ In your Turborepo app/package that needs email functionality:
 
 ```bash
 # Using pnpm (recommended for Turborepo)
-pnpm add @monkedevlife/solidjs-email-components solid-js --filter your-app-name
+pnpm add @solidjs-email/components solid-js --filter your-app-name
 
 # Or from the package directory
 cd apps/your-app
-pnpm add @monkedevlife/solidjs-email-components solid-js
+pnpm add @solidjs-email/components solid-js
 ```
 
 ## Project Structure
@@ -67,7 +67,7 @@ import {
   Section,
   Tailwind,
   Text,
-} from '@monkedevlife/solidjs-email-components';
+} from '@solidjs-email/components';
 
 export const WelcomeEmail = (props: { name: string }) => (
   <Html>
@@ -100,7 +100,7 @@ export const WelcomeEmail = (props: { name: string }) => (
 ## Render and Send Emails
 
 ```tsx
-import { render } from '@monkedevlife/solidjs-email-components';
+import { render } from '@solidjs-email/components';
 import { WelcomeEmail } from './emails/welcome';
 
 // In your API route or server function
@@ -134,7 +134,7 @@ If you want to share email templates across multiple apps, create a dedicated pa
     "build": "tsup src/index.ts --format esm,cjs --dts"
   },
   "dependencies": {
-    "@monkedevlife/solidjs-email-components": "^0.0.1"
+    "@solidjs-email/components": "^0.0.1"
   },
   "peerDependencies": {
     "solid-js": "^1.9.0"

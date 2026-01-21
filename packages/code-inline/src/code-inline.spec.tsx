@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 import { CodeInline } from './index';
 
 describe('<CodeInline> component', () => {

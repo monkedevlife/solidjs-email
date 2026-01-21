@@ -1,20 +1,20 @@
-# @monkedevlife/solidjs-email-tailwind
+# @solidjs-email/tailwind
 
-[![npm version](https://img.shields.io/npm/v/@monkedevlife/solidjs-email-tailwind.svg)](https://www.npmjs.com/package/@monkedevlife/solidjs-email-tailwind)
+[![npm version](https://img.shields.io/npm/v/@solidjs-email/tailwind.svg)](https://www.npmjs.com/package/@solidjs-email/tailwind)
 
 Tailwind CSS support for SolidJS email components. Automatically converts Tailwind classes to inline styles for email compatibility.
 
 ## Installation
 
 ```bash
-npm install @monkedevlife/solidjs-email-tailwind
+npm install @solidjs-email/tailwind
 ```
 
 ## Usage
 
 ```tsx
-import { Tailwind } from '@monkedevlife/solidjs-email-tailwind';
-import { Body, Text } from '@monkedevlife/solidjs-email-components';
+import { Tailwind } from '@solidjs-email/tailwind';
+import { Body, Text } from '@solidjs-email/components';
 
 const Email = () => (
   <Tailwind>

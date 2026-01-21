@@ -8,9 +8,9 @@ export default defineConfig({
   plugins: [solidPlugin({ ssr: true })],
   resolve: {
     alias: {
-      '@monkedevlife/solidjs-email-components': resolve(packagesDir, 'components/src/index.ts'),
-      '@monkedevlife/solidjs-email-render': resolve(packagesDir, 'render/src/index.ts'),
-      '@monkedevlife/solidjs-email-tailwind': resolve(packagesDir, 'tailwind/src/index.ts'),
+      '@solidjs-email/components': resolve(packagesDir, 'components/src/index.ts'),
+      '@solidjs-email/render': resolve(packagesDir, 'render/src/index.ts'),
+      '@solidjs-email/tailwind': resolve(packagesDir, 'tailwind/src/index.ts'),
       '@solidjs-email/body': resolve(packagesDir, 'body/src/index.ts'),
       '@solidjs-email/button': resolve(packagesDir, 'button/src/index.ts'),
       '@solidjs-email/code-block': resolve(packagesDir, 'code-block/src/index.ts'),

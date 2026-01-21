@@ -1,5 +1,5 @@
 {
-  "name": "@monkedevlife/solidjs-email-code-block",
+  "name": "@solidjs-email/code-block",
   "version": "0.0.1",
   "description": "Code block component with syntax highlighting for SolidJS email templates",
   "sideEffects": false,
@@ -44,16 +44,16 @@
     "prismjs": "^1.30.0"
   },
   "devDependencies": {
-    "@monkedevlife/solidjs-email-render": "workspace:*",
+    "@solidjs-email/render": "workspace:*",
     "@types/prismjs": "1.26.5",
     "solid-js": "^1.9.0",
     "typescript": "^5.8.0",
     "vitest": "^4.0.0"
   },
-  "author": "monkedevlife",
+  "author": "solidjs-email",
   "repository": {
     "type": "git",
-    "url": "https://github.com/monkedevlife/solidjs-email.git",
+    "url": "https://github.com/solidjs-email/solidjs-email.git",
     "directory": "packages/code-block"
   },
   "publishConfig": {

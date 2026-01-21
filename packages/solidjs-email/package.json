@@ -1,8 +1,9 @@
 {
-  "name": "@solidjs-email/components",
+  "name": "solidjs-email",
   "version": "0.0.1",
-  "description": "All SolidJS email components in one package",
+  "description": "Build and send emails using SolidJS components",
   "sideEffects": false,
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -19,17 +20,30 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       }
+    },
+    "./components": {
+      "import": {
+        "types": "./dist/components.d.ts",
+        "default": "./dist/components.mjs"
+      },
+      "require": {
+        "types": "./dist/components.d.ts",
+        "default": "./dist/components.js"
+      }
     }
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsdown src/index.ts --format esm,cjs --dts",
-    "build:watch": "tsdown src/index.ts --format esm,cjs --dts --watch",
+    "build": "tsdown src/index.ts src/components.ts --format esm,cjs --dts",
+    "build:watch": "tsdown src/index.ts src/components.ts --format esm,cjs --dts --watch",
     "clean": "rm -rf dist"
   },
   "keywords": [
     "solidjs",
-    "email"
+    "email",
+    "components",
+    "render",
+    "templates"
   ],
   "engines": {
     "node": ">=20.0.0"
@@ -61,15 +75,15 @@
   },
   "devDependencies": {
     "solid-js": "^1.9.0",
-    "typescript": "^5.8.0",
-    "vitest": "^4.0.0"
+    "typescript": "^5.8.0"
   },
   "author": "solidjs-email",
   "repository": {
     "type": "git",
     "url": "https://github.com/solidjs-email/solidjs-email.git",
-    "directory": "packages/components"
+    "directory": "packages/solidjs-email"
   },
+  "homepage": "https://github.com/solidjs-email/solidjs-email",
   "publishConfig": {
     "access": "public"
   }

@@ -1,22 +1,22 @@
-# @monkedevlife/solidjs-email-text
+# @solidjs-email/text
 
-[![npm version](https://img.shields.io/npm/v/@monkedevlife/solidjs-email-text.svg)](https://www.npmjs.com/package/@monkedevlife/solidjs-email-text)
+[![npm version](https://img.shields.io/npm/v/@solidjs-email/text.svg)](https://www.npmjs.com/package/@solidjs-email/text)
 
 Text component for SolidJS email templates
 
 ## Installation
 
 ```bash
-npm install @monkedevlife/solidjs-email-text
+npm install @solidjs-email/text
 ```
 
 ## Usage
 
 ```tsx
-import { utext } from '@monkedevlife/solidjs-email-text';
+import { utext } from '@solidjs-email/text';
 ```
 
-See the [main documentation](https://github.com/monkedevlife/solidjs-email) for full usage examples.
+See the [main documentation](https://github.com/solidjs-email/solidjs-email) for full usage examples.
 
 ## License
 

@@ -1,23 +1,23 @@
 {
-  "name": "solidjs-email",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "build": "pnpm -r build",
-    "dev": "pnpm --filter @solidjs-email/dev-server exec vite-node src/cli.ts --dir ../../examples/emails",
-    "lint": "biome check",
-    "lint:fix": "biome check --write .",
-    "test": "pnpm -r test"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.0.0",
-    "@types/node": "^22.0.0",
-    "solid-js": "^1.9.0",
-    "tsdown": "^0.11.0",
-    "typescript": "^5.8.0",
-    "vite-plugin-solid": "^2.11.0",
-    "vitest": "^4.0.0"
-  },
-  "packageManager": "pnpm@10.24.0",
-  "license": "MIT"
+	"name": "solidjs-email-monorepo",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"build": "pnpm -r build",
+		"dev": "pnpm --filter @solidjs-email/dev-server exec vite-node src/cli.ts --dir ../../examples/emails",
+		"lint": "biome check",
+		"lint:fix": "biome check --write .",
+		"test": "pnpm -r test"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.0.0",
+		"@types/node": "^22.0.0",
+		"solid-js": "^1.9.0",
+		"tsdown": "^0.11.0",
+		"typescript": "^5.8.0",
+		"vite-plugin-solid": "^2.11.0",
+		"vitest": "^4.0.0"
+	},
+	"packageManager": "pnpm@10.24.0",
+	"license": "MIT"
 }

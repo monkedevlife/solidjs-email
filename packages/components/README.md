@@ -1,13 +1,13 @@
-# @monkedevlife/solidjs-email-components
+# @solidjs-email/components
 
-[![npm version](https://img.shields.io/npm/v/@monkedevlife/solidjs-email-components.svg)](https://www.npmjs.com/package/@monkedevlife/solidjs-email-components)
+[![npm version](https://img.shields.io/npm/v/@solidjs-email/components.svg)](https://www.npmjs.com/package/@solidjs-email/components)
 
 All SolidJS email components in one package.
 
 ## Installation
 
 ```bash
-npm install @monkedevlife/solidjs-email-components
+npm install @solidjs-email/components
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ import {
   Tailwind,
   Text,
   render,
-} from '@monkedevlife/solidjs-email-components';
+} from '@solidjs-email/components';
 
 const Email = () => (
   <Html>

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Link } from './link';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 
 describe('<Link> component', () => {
   it('renders as an anchor element', async () => {

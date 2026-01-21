@@ -1,4 +1,4 @@
-import { render } from '@monkedevlife/solidjs-email-components';
+import { render } from '@solidjs-email/components';
 import { WelcomeEmail } from './emails/welcome';
 import { VerificationCodeEmail } from './emails/verification-code';
 

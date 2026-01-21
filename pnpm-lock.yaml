@@ -32,7 +32,7 @@ importers:
 
   examples/default:
     dependencies:
-      '@monkedevlife/solidjs-email-components':
+      '@solidjs-email/components':
         specifier: workspace:*
         version: link:../../packages/components
       solid-js:
@@ -51,7 +51,7 @@ importers:
 
   examples/tailwindv4:
     dependencies:
-      '@monkedevlife/solidjs-email-components':
+      '@solidjs-email/components':
         specifier: workspace:*
         version: link:../../packages/components
       solid-js:
@@ -70,7 +70,7 @@ importers:
 
   packages/body:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -85,7 +85,7 @@ importers:
 
   packages/button:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -104,7 +104,7 @@ importers:
         specifier: ^1.30.0
         version: 1.30.0
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       '@types/prismjs':
@@ -122,7 +122,7 @@ importers:
 
   packages/code-inline:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -137,7 +137,7 @@ importers:
 
   packages/column:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -152,64 +152,64 @@ importers:
 
   packages/components:
     dependencies:
-      '@monkedevlife/solidjs-email-body':
+      '@solidjs-email/body':
         specifier: workspace:*
         version: link:../body
-      '@monkedevlife/solidjs-email-button':
+      '@solidjs-email/button':
         specifier: workspace:*
         version: link:../button
-      '@monkedevlife/solidjs-email-code-block':
+      '@solidjs-email/code-block':
         specifier: workspace:*
         version: link:../code-block
-      '@monkedevlife/solidjs-email-code-inline':
+      '@solidjs-email/code-inline':
         specifier: workspace:*
         version: link:../code-inline
-      '@monkedevlife/solidjs-email-column':
+      '@solidjs-email/column':
         specifier: workspace:*
         version: link:../column
-      '@monkedevlife/solidjs-email-container':
+      '@solidjs-email/container':
         specifier: workspace:*
         version: link:../container
-      '@monkedevlife/solidjs-email-font':
+      '@solidjs-email/font':
         specifier: workspace:*
         version: link:../font
-      '@monkedevlife/solidjs-email-head':
+      '@solidjs-email/head':
         specifier: workspace:*
         version: link:../head
-      '@monkedevlife/solidjs-email-heading':
+      '@solidjs-email/heading':
         specifier: workspace:*
         version: link:../heading
-      '@monkedevlife/solidjs-email-hr':
+      '@solidjs-email/hr':
         specifier: workspace:*
         version: link:../hr
-      '@monkedevlife/solidjs-email-html':
+      '@solidjs-email/html':
         specifier: workspace:*
         version: link:../html
-      '@monkedevlife/solidjs-email-img':
+      '@solidjs-email/img':
         specifier: workspace:*
         version: link:../img
-      '@monkedevlife/solidjs-email-link':
+      '@solidjs-email/link':
         specifier: workspace:*
         version: link:../link
-      '@monkedevlife/solidjs-email-markdown':
+      '@solidjs-email/markdown':
         specifier: workspace:*
         version: link:../markdown
-      '@monkedevlife/solidjs-email-preview':
+      '@solidjs-email/preview':
         specifier: workspace:*
         version: link:../preview
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
-      '@monkedevlife/solidjs-email-row':
+      '@solidjs-email/row':
         specifier: workspace:*
         version: link:../row
-      '@monkedevlife/solidjs-email-section':
+      '@solidjs-email/section':
         specifier: workspace:*
         version: link:../section
-      '@monkedevlife/solidjs-email-tailwind':
+      '@solidjs-email/tailwind':
         specifier: workspace:*
         version: link:../tailwind
-      '@monkedevlife/solidjs-email-text':
+      '@solidjs-email/text':
         specifier: workspace:*
         version: link:../text
     devDependencies:
@@ -225,7 +225,7 @@ importers:
 
   packages/container:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -240,7 +240,7 @@ importers:
 
   packages/dev-server:
     dependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       cac:
@@ -262,7 +262,7 @@ importers:
         specifier: ^2.11.0
         version: 2.11.10(solid-js@1.9.10)(vite@6.4.1(@types/node@22.19.7)(jiti@2.6.1))
     devDependencies:
-      '@monkedevlife/solidjs-email-components':
+      '@solidjs-email/components':
         specifier: workspace:*
         version: link:../components
       '@types/node':
@@ -280,7 +280,7 @@ importers:
 
   packages/font:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -295,7 +295,7 @@ importers:
 
   packages/head:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -310,7 +310,7 @@ importers:
 
   packages/heading:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -325,7 +325,7 @@ importers:
 
   packages/hr:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -340,7 +340,7 @@ importers:
 
   packages/html:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -355,7 +355,7 @@ importers:
 
   packages/img:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -370,7 +370,7 @@ importers:
 
   packages/link:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -389,7 +389,7 @@ importers:
         specifier: ^15.0.0
         version: 15.0.12
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -404,7 +404,7 @@ importers:
 
   packages/preview:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -419,7 +419,7 @@ importers:
 
   packages/render:
     dependencies:
-      '@monkedevlife/solidjs-email-tailwind':
+      '@solidjs-email/tailwind':
         specifier: workspace:*
         version: link:../tailwind
       html-to-text:
@@ -441,7 +441,7 @@ importers:
 
   packages/row:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:
@@ -456,9 +456,82 @@ importers:
 
   packages/section:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
+      solid-js:
+        specifier: ^1.9.0
+        version: 1.9.10
+      typescript:
+        specifier: ^5.8.0
+        version: 5.9.3
+      vitest:
+        specifier: ^4.0.0
+        version: 4.0.17(@types/node@22.19.7)(jiti@2.6.1)
+
+  packages/solidjs-email:
+    dependencies:
+      '@solidjs-email/body':
+        specifier: workspace:*
+        version: link:../body
+      '@solidjs-email/button':
+        specifier: workspace:*
+        version: link:../button
+      '@solidjs-email/code-block':
+        specifier: workspace:*
+        version: link:../code-block
+      '@solidjs-email/code-inline':
+        specifier: workspace:*
+        version: link:../code-inline
+      '@solidjs-email/column':
+        specifier: workspace:*
+        version: link:../column
+      '@solidjs-email/container':
+        specifier: workspace:*
+        version: link:../container
+      '@solidjs-email/font':
+        specifier: workspace:*
+        version: link:../font
+      '@solidjs-email/head':
+        specifier: workspace:*
+        version: link:../head
+      '@solidjs-email/heading':
+        specifier: workspace:*
+        version: link:../heading
+      '@solidjs-email/hr':
+        specifier: workspace:*
+        version: link:../hr
+      '@solidjs-email/html':
+        specifier: workspace:*
+        version: link:../html
+      '@solidjs-email/img':
+        specifier: workspace:*
+        version: link:../img
+      '@solidjs-email/link':
+        specifier: workspace:*
+        version: link:../link
+      '@solidjs-email/markdown':
+        specifier: workspace:*
+        version: link:../markdown
+      '@solidjs-email/preview':
+        specifier: workspace:*
+        version: link:../preview
+      '@solidjs-email/render':
+        specifier: workspace:*
+        version: link:../render
+      '@solidjs-email/row':
+        specifier: workspace:*
+        version: link:../row
+      '@solidjs-email/section':
+        specifier: workspace:*
+        version: link:../section
+      '@solidjs-email/tailwind':
+        specifier: workspace:*
+        version: link:../tailwind
+      '@solidjs-email/text':
+        specifier: workspace:*
+        version: link:../text
+    devDependencies:
       solid-js:
         specifier: ^1.9.0
         version: 1.9.10
@@ -478,7 +551,7 @@ importers:
         specifier: ^4.1.18
         version: 4.1.18
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       '@types/css-tree':
@@ -496,7 +569,7 @@ importers:
 
   packages/text:
     devDependencies:
-      '@monkedevlife/solidjs-email-render':
+      '@solidjs-email/render':
         specifier: workspace:*
         version: link:../render
       solid-js:

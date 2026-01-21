@@ -1,22 +1,22 @@
-# @monkedevlife/solidjs-email-container
+# @solidjs-email/container
 
-[![npm version](https://img.shields.io/npm/v/@monkedevlife/solidjs-email-container.svg)](https://www.npmjs.com/package/@monkedevlife/solidjs-email-container)
+[![npm version](https://img.shields.io/npm/v/@solidjs-email/container.svg)](https://www.npmjs.com/package/@solidjs-email/container)
 
 Container component for SolidJS email templates
 
 ## Installation
 
 ```bash
-npm install @monkedevlife/solidjs-email-container
+npm install @solidjs-email/container
 ```
 
 ## Usage
 
 ```tsx
-import { ucontainer } from '@monkedevlife/solidjs-email-container';
+import { ucontainer } from '@solidjs-email/container';
 ```
 
-See the [main documentation](https://github.com/monkedevlife/solidjs-email) for full usage examples.
+See the [main documentation](https://github.com/solidjs-email/solidjs-email) for full usage examples.
 
 ## License
 

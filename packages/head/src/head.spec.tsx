@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Head } from './head';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 
 describe('<Head> component', () => {
   it('renders meta charset tag', async () => {

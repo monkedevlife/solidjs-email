@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Hr } from './hr';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 
 describe('<Hr> component', () => {
   it('renders as an hr element', async () => {

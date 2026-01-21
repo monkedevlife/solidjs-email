@@ -5,15 +5,94 @@ The agent reads this after compaction to restore context.
 
 ---
 
+## [2026-01-21 19:25] Created solidjs-email Main Package & Renamed to @solidjs-email Org
+
+### Completed
+- Created **solidjs-email** main package (`packages/solidjs-email/`):
+  - Re-exports all components and render utilities in a single package
+  - Users can `npm install solidjs-email` to get everything
+  - Has `solidjs-email` (main) and `solidjs-email/components` (components only) exports
+  - README with usage examples
+
+- **Renamed all packages** from `@monkedevlife/solidjs-email-*` to `@solidjs-email/*`:
+  - Updated all 22 package.json files
+  - Updated all import statements in source files
+  - Updated vitest.config.ts aliases
+  - Updated example projects
+  - Updated documentation
+
+### Package Naming
+- Main package: `solidjs-email` (no scope, easy to install)
+- Individual packages: `@solidjs-email/body`, `@solidjs-email/button`, etc.
+- Repository: `https://github.com/solidjs-email/solidjs-email.git`
+
+### Current State
+- **26 workspace projects** (23 packages + examples + root)
+- **141 tests passing** across 20 packages
+- All packages build successfully
+- Dev server working
+
+### Package Summary (Updated)
+| Package | npm Name | Description |
+|---------|----------|-------------|
+| solidjs-email | `solidjs-email` | Main entry point |
+| body | `@solidjs-email/body` | Body component |
+| button | `@solidjs-email/button` | Button component |
+| code-block | `@solidjs-email/code-block` | Syntax highlighting |
+| code-inline | `@solidjs-email/code-inline` | Inline code |
+| column | `@solidjs-email/column` | Table column |
+| container | `@solidjs-email/container` | Container |
+| font | `@solidjs-email/font` | Custom fonts |
+| head | `@solidjs-email/head` | Head component |
+| heading | `@solidjs-email/heading` | Heading h1-h6 |
+| hr | `@solidjs-email/hr` | Horizontal rule |
+| html | `@solidjs-email/html` | Html wrapper |
+| img | `@solidjs-email/img` | Image component |
+| link | `@solidjs-email/link` | Link anchor |
+| markdown | `@solidjs-email/markdown` | Markdown parser |
+| preview | `@solidjs-email/preview` | Preview text |
+| render | `@solidjs-email/render` | HTML rendering |
+| row | `@solidjs-email/row` | Table row |
+| section | `@solidjs-email/section` | Section |
+| tailwind | `@solidjs-email/tailwind` | Tailwind CSS |
+| text | `@solidjs-email/text` | Text paragraph |
+| components | `@solidjs-email/components` | Barrel export |
+| dev-server | `@solidjs-email/dev-server` | Preview server |
+
+### Usage
+```bash
+# Install main package
+npm install solidjs-email solid-js
+
+# Or install individual packages
+npm install @solidjs-email/render @solidjs-email/button solid-js
+```
+
+```tsx
+// Using main package
+import { render, Button, Text, Container } from 'solidjs-email';
+
+// Using individual packages
+import { render } from '@solidjs-email/render';
+import { Button } from '@solidjs-email/button';
+```
+
+### Next Steps
+- Set up npm organization `@solidjs-email` 
+- Publish packages to npm
+- Update documentation with new package names
+
+---
+
 ## [2026-01-18 16:30] Added CodeInline, CodeBlock, and GitHub Actions CI
 
 ### Completed
-- Added **CodeInline component** (`@monkedevlife/solidjs-email-code-inline`):
+- Added **CodeInline component** (`@solidjs-email/code-inline`):
   - Renders `<code>` element with Orange.fr email client compatibility
   - Uses `<style>` tag for meta-based CSS targeting
   - 8 tests passing
 
-- Added **CodeBlock component** (`@monkedevlife/solidjs-email-code-block`):
+- Added **CodeBlock component** (`@solidjs-email/code-block`):
   - Syntax highlighting using bundled Prism.js
   - 15+ code themes (dracula, vscDarkPlus, xonokai, etc.)
   - Supports 400+ languages

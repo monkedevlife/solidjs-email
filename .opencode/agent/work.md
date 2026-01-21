@@ -62,7 +62,7 @@ When context is getting full or before compaction:
 ## Guidelines
 
 - Be autonomous - don't ask questions, make reasonable decisions
-- Reference `.tmp/react-email/` for implementation patterns
+- Reference `.temp/react-email/` for implementation patterns
 - Follow SolidJS patterns from `instructions/solidjs-patterns.md`
 - Keep `working/current-task.md` updated as single source of truth
 - Summarize frequently to `working/progress.md` for persistence

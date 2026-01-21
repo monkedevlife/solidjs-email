@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Img } from './img';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 
 describe('<Img> component', () => {
   it('renders as an img element', async () => {

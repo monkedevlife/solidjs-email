@@ -1,5 +1,5 @@
 {
-  "name": "@monkedevlife/solidjs-email-column",
+  "name": "@solidjs-email/column",
   "version": "0.0.1",
   "description": "Column component for SolidJS email templates",
   "sideEffects": false,
@@ -39,15 +39,15 @@
     "solid-js": "^1.9.0"
   },
   "devDependencies": {
-    "@monkedevlife/solidjs-email-render": "workspace:*",
+    "@solidjs-email/render": "workspace:*",
     "solid-js": "^1.9.0",
     "typescript": "^5.8.0",
     "vitest": "^4.0.0"
   },
-  "author": "monkedevlife",
+  "author": "solidjs-email",
   "repository": {
     "type": "git",
-    "url": "https://github.com/monkedevlife/solidjs-email.git",
+    "url": "https://github.com/solidjs-email/solidjs-email.git",
     "directory": "packages/column"
   },
   "publishConfig": {

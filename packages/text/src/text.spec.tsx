@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Text } from './text';
-import { render } from '@monkedevlife/solidjs-email-render';
+import { render } from '@solidjs-email/render';
 
 describe('<Text> component', () => {
   it('renders as a p element', async () => {

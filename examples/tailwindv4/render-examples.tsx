@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { render } from '@monkedevlife/solidjs-email-components';
+import { render } from '@solidjs-email/components';
 import { CustomThemeEmail } from './emails/custom-theme';
 
 const __filename = fileURLToPath(import.meta.url);

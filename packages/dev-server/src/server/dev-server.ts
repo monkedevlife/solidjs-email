@@ -26,7 +26,7 @@ function findPackagesDir(): string {
     }
     dir = path.dirname(dir);
   }
-  return path.join(process.cwd(), 'node_modules', '@monkedevlife');
+  return path.join(process.cwd(), 'node_modules', '@solidjs-email');
 }
 
 function getEmailTemplates(emailsDir: string): EmailTemplate[] {
@@ -61,7 +61,7 @@ async function renderEmail(
       throw new Error('No valid email component found');
     }
 
-    const { render } = await vite.ssrLoadModule('@monkedevlife/solidjs-email-render');
+    const { render } = await vite.ssrLoadModule('@solidjs-email/render');
     const previewProps = EmailComponent.PreviewProps || {};
     const html = await render(() => EmailComponent(previewProps));
     return html;
@@ -245,25 +245,25 @@ export async function startDevServer(options: DevServerOptions): Promise<void> {
     plugins: [solidPlugin({ ssr: true })],
     resolve: {
       alias: {
-        '@monkedevlife/solidjs-email-render': path.join(packagesDir, 'render/src/index.ts'),
-        '@monkedevlife/solidjs-email-html': path.join(packagesDir, 'html/src/index.ts'),
-        '@monkedevlife/solidjs-email-head': path.join(packagesDir, 'head/src/index.ts'),
-        '@monkedevlife/solidjs-email-body': path.join(packagesDir, 'body/src/index.ts'),
-        '@monkedevlife/solidjs-email-tailwind': path.join(packagesDir, 'tailwind/src/index.ts'),
-        '@monkedevlife/solidjs-email-button': path.join(packagesDir, 'button/src/index.ts'),
-        '@monkedevlife/solidjs-email-container': path.join(packagesDir, 'container/src/index.ts'),
-        '@monkedevlife/solidjs-email-section': path.join(packagesDir, 'section/src/index.ts'),
-        '@monkedevlife/solidjs-email-row': path.join(packagesDir, 'row/src/index.ts'),
-        '@monkedevlife/solidjs-email-column': path.join(packagesDir, 'column/src/index.ts'),
-        '@monkedevlife/solidjs-email-text': path.join(packagesDir, 'text/src/index.ts'),
-        '@monkedevlife/solidjs-email-link': path.join(packagesDir, 'link/src/index.ts'),
-        '@monkedevlife/solidjs-email-heading': path.join(packagesDir, 'heading/src/index.ts'),
-        '@monkedevlife/solidjs-email-img': path.join(packagesDir, 'img/src/index.ts'),
-        '@monkedevlife/solidjs-email-hr': path.join(packagesDir, 'hr/src/index.ts'),
-        '@monkedevlife/solidjs-email-preview': path.join(packagesDir, 'preview/src/index.ts'),
-        '@monkedevlife/solidjs-email-font': path.join(packagesDir, 'font/src/index.ts'),
-        '@monkedevlife/solidjs-email-markdown': path.join(packagesDir, 'markdown/src/index.ts'),
-        '@monkedevlife/solidjs-email-components': path.join(packagesDir, 'components/src/index.ts'),
+        '@solidjs-email/render': path.join(packagesDir, 'render/src/index.ts'),
+        '@solidjs-email/html': path.join(packagesDir, 'html/src/index.ts'),
+        '@solidjs-email/head': path.join(packagesDir, 'head/src/index.ts'),
+        '@solidjs-email/body': path.join(packagesDir, 'body/src/index.ts'),
+        '@solidjs-email/tailwind': path.join(packagesDir, 'tailwind/src/index.ts'),
+        '@solidjs-email/button': path.join(packagesDir, 'button/src/index.ts'),
+        '@solidjs-email/container': path.join(packagesDir, 'container/src/index.ts'),
+        '@solidjs-email/section': path.join(packagesDir, 'section/src/index.ts'),
+        '@solidjs-email/row': path.join(packagesDir, 'row/src/index.ts'),
+        '@solidjs-email/column': path.join(packagesDir, 'column/src/index.ts'),
+        '@solidjs-email/text': path.join(packagesDir, 'text/src/index.ts'),
+        '@solidjs-email/link': path.join(packagesDir, 'link/src/index.ts'),
+        '@solidjs-email/heading': path.join(packagesDir, 'heading/src/index.ts'),
+        '@solidjs-email/img': path.join(packagesDir, 'img/src/index.ts'),
+        '@solidjs-email/hr': path.join(packagesDir, 'hr/src/index.ts'),
+        '@solidjs-email/preview': path.join(packagesDir, 'preview/src/index.ts'),
+        '@solidjs-email/font': path.join(packagesDir, 'font/src/index.ts'),
+        '@solidjs-email/markdown': path.join(packagesDir, 'markdown/src/index.ts'),
+        '@solidjs-email/components': path.join(packagesDir, 'components/src/index.ts'),
       },
     },
   });
