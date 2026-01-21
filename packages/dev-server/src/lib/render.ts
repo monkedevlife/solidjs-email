@@ -5,6 +5,10 @@ export interface RenderResult {
   error?: string;
 }
 
+function stripScripts(html: string): string {
+  return html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+}
+
 export async function renderEmailTemplate(
   templatePath: string
 ): Promise<RenderResult> {
@@ -23,7 +27,8 @@ export async function renderEmailTemplate(
       };
     }
 
-    const html = await solidRender(() => EmailComponent({}));
+    const rawHtml = await solidRender(() => EmailComponent({}));
+    const html = stripScripts(rawHtml);
 
     return { html };
   } catch (error) {
