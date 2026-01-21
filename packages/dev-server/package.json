@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-email/dev-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Development server for previewing SolidJS email templates",
   "type": "module",
   "main": "./dist/index.js",
@@ -21,8 +21,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsdown src/index.ts src/cli.ts --format esm --dts",
-    "build:watch": "tsdown src/index.ts src/cli.ts --format esm --dts --watch",
+    "build": "tsdown src/index.ts src/cli.ts",
+    "build:watch": "tsdown src/index.ts src/cli.ts --watch",
     "dev": "vite-node src/cli.ts -- --dir ../../../examples/emails"
   },
   "keywords": [

@@ -2,6 +2,7 @@
 	"name": "solidjs-email-monorepo",
 	"version": "0.0.0",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"build": "pnpm -r build",
 		"dev": "pnpm --filter @solidjs-email/dev-server exec vite-node src/cli.ts --dir ../../examples/emails",
@@ -12,6 +13,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.0.0",
 		"@types/node": "^22.0.0",
+		"rolldown-plugin-solid": "^0.2.1",
 		"solid-js": "^1.9.0",
 		"tsdown": "^0.11.0",
 		"typescript": "^5.8.0",

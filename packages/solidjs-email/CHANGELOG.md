@@ -1,5 +1,14 @@
 # @solidjs-email/main
 
+## 1.0.2
+
+### Patch Changes
+
+- Fixed SolidJS JSX transform in all component packages
+  - Added `rolldown-plugin-solid` to properly compile JSX for SolidJS
+  - All components now use `solid-js/web` runtime instead of incorrect `solid-js/jsx-runtime`
+  - Created shared `tsdown.config.ts` at monorepo root for consistent builds
+
 ## 1.0.1
 
 ### Patch Changes

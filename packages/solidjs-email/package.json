@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-email/main",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Build and send emails using SolidJS components",
   "sideEffects": false,
   "type": "module",
@@ -34,8 +34,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsdown src/index.ts src/components.ts --format esm,cjs --dts",
-    "build:watch": "tsdown src/index.ts src/components.ts --format esm,cjs --dts --watch",
+    "build": "tsdown src/index.ts src/components.ts",
+    "build:watch": "tsdown src/index.ts src/components.ts --watch",
     "clean": "rm -rf dist"
   },
   "keywords": [

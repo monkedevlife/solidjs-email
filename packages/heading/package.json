@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-email/heading",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Heading component for SolidJS email templates",
   "sideEffects": false,
   "main": "./dist/index.js",
@@ -23,8 +23,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsdown src/index.ts --format esm,cjs --dts",
-    "build:watch": "tsdown src/index.ts --format esm,cjs --dts --watch",
+    "build": "tsdown src/index.ts",
+    "build:watch": "tsdown src/index.ts --watch",
     "clean": "rm -rf dist",
     "test": "vitest run"
   },
