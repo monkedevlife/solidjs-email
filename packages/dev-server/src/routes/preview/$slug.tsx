@@ -1,97 +1,73 @@
-import { createSignal, createResource, Show, type Component } from 'solid-js';
-import { useParams, A } from '@solidjs/router';
-import { cache, createAsync } from '@solidjs/router';
+import { createSignal, Show, type Component } from 'solid-js'
+import { Link, createFileRoute } from '@tanstack/solid-router'
+import { fetchEmailData } from '../../lib/server'
 
-type ViewMode = 'preview' | 'html';
+type ViewMode = 'preview' | 'html'
 
-export default function PreviewPage() {
-  const params = useParams<{ slug: string }>();
-  const [viewMode, setViewMode] = createSignal<ViewMode>('preview');
-  const [copied, setCopied] = createSignal(false);
+export const Route = createFileRoute('/preview/$slug')({
+  loader: async ({ params: { slug } }) => fetchEmailData({ data: slug }),
+  component: PreviewPage,
+})
 
-  const emailData = createAsync(() => fetchEmailData(params.slug));
+function PreviewPage() {
+  const emailData = Route.useLoaderData()
+  const params = Route.useParams()
+  const [viewMode, setViewMode] = createSignal<ViewMode>('preview')
+  const [copied, setCopied] = createSignal(false)
 
   const copyToClipboard = async () => {
-    const data = emailData();
+    const data = emailData()
     if (data?.html) {
-      await navigator.clipboard.writeText(data.html);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      await navigator.clipboard.writeText(data.html)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
     }
-  };
+  }
 
   return (
     <div class="flex h-screen bg-[var(--color-bg)]">
-      <Sidebar templates={emailData()?.templates ?? []} currentSlug={params.slug} />
+      <Sidebar templates={emailData().templates ?? []} currentSlug={params().slug} />
       <div class="flex-1 flex flex-col">
         <Topbar
-          title={emailData()?.template?.name ?? 'Loading...'}
+          title={emailData().template?.name ?? 'Loading...'}
           viewMode={viewMode()}
           onViewModeChange={setViewMode}
           onCopy={copyToClipboard}
           copied={copied()}
         />
         <main class="flex-1 overflow-hidden">
-          <Show when={emailData()?.error}>
+          <Show when={emailData().error}>
             <div class="p-8 text-red-400">
               <h2 class="text-lg font-semibold mb-2">Error</h2>
               <pre class="text-sm bg-red-900/20 p-4 rounded overflow-auto">
-                {emailData()?.error}
+                {emailData().error}
               </pre>
             </div>
           </Show>
-          <Show when={!emailData()?.error}>
+          <Show when={!emailData().error}>
             <Show when={viewMode() === 'preview'}>
-              <PreviewFrame html={emailData()?.html ?? ''} />
+              <PreviewFrame html={emailData().html ?? ''} />
             </Show>
             <Show when={viewMode() === 'html'}>
-              <CodeView html={emailData()?.html ?? ''} />
+              <CodeView html={emailData().html ?? ''} />
             </Show>
           </Show>
         </main>
       </div>
     </div>
-  );
+  )
 }
 
-const fetchEmailData = cache(async (slug: string) => {
-  'use server';
-  const { getEmailTemplates, getEmailBySlug } = await import('../../lib/emails');
-  const { renderEmailTemplate } = await import('../../lib/render');
-
-  const emailsDir = process.env.EMAILS_DIR || './emails';
-  const templates = getEmailTemplates(emailsDir);
-  const template = getEmailBySlug(emailsDir, slug);
-
-  if (!template) {
-    return {
-      templates,
-      template: null,
-      html: '',
-      error: `Template "${slug}" not found`,
-    };
-  }
-
-  const result = await renderEmailTemplate(template.path);
-
-  return {
-    templates,
-    template,
-    html: result.html,
-    error: result.error,
-  };
-}, 'email-data');
-
 const Sidebar: Component<{
-  templates: { name: string; slug: string }[];
-  currentSlug?: string;
+  templates: { name: string; slug: string }[]
+  currentSlug?: string
 }> = (props) => {
   return (
     <aside class="w-64 bg-[var(--color-bg-secondary)] border-r border-[var(--color-border)] flex flex-col">
       <div class="p-4 border-b border-[var(--color-border)]">
-        <A href="/" class="font-semibold text-[var(--color-text)] hover:text-[var(--color-accent)]">
+        <Link to="/" class="font-semibold text-[var(--color-text)] hover:text-[var(--color-accent)]">
           SolidJS Email
-        </A>
+        </Link>
       </div>
       <div class="p-4 border-b border-[var(--color-border)]">
         <h3 class="text-xs uppercase tracking-wider text-[var(--color-text-muted)] mb-2">
@@ -110,8 +86,9 @@ const Sidebar: Component<{
           <ul class="space-y-1">
             {props.templates.map((template) => (
               <li>
-                <A
-                  href={`/preview/${template.slug}`}
+                <Link
+                  to="/preview/$slug"
+                  params={{ slug: template.slug }}
                   class={`block px-3 py-2 rounded text-sm transition-colors ${
                     props.currentSlug === template.slug
                       ? 'bg-[var(--color-accent)] text-white'
@@ -119,22 +96,22 @@ const Sidebar: Component<{
                   }`}
                 >
                   {template.name}
-                </A>
+                </Link>
               </li>
             ))}
           </ul>
         </Show>
       </nav>
     </aside>
-  );
-};
+  )
+}
 
 const Topbar: Component<{
-  title: string;
-  viewMode: ViewMode;
-  onViewModeChange: (mode: ViewMode) => void;
-  onCopy: () => void;
-  copied: boolean;
+  title: string
+  viewMode: ViewMode
+  onViewModeChange: (mode: ViewMode) => void
+  onCopy: () => void
+  copied: boolean
 }> = (props) => {
   return (
     <header class="h-14 px-4 border-b border-[var(--color-border)] flex items-center justify-between bg-[var(--color-bg-secondary)]">
@@ -183,8 +160,8 @@ const Topbar: Component<{
         </button>
       </div>
     </header>
-  );
-};
+  )
+}
 
 const PreviewFrame: Component<{ html: string }> = (props) => {
   return (
@@ -198,8 +175,8 @@ const PreviewFrame: Component<{ html: string }> = (props) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
 const CodeView: Component<{ html: string }> = (props) => {
   return (
@@ -208,8 +185,8 @@ const CodeView: Component<{ html: string }> = (props) => {
         {props.html}
       </pre>
     </div>
-  );
-};
+  )
+}
 
 const CopyIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -217,11 +194,11 @@ const CopyIcon = () => (
     <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
   </svg>
-);
+)
 
 const CheckIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
     <title>Copied</title>
     <polyline points="20 6 9 17 4 12" />
   </svg>
-);
+)

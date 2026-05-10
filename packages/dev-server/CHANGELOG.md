@@ -1,5 +1,17 @@
 # @solidjs-email/dev-server
 
+## 2.0.0
+
+### Major Changes
+
+- Release next major across all packages to align breaking changes and keep workspace versions in sync.
+
+### Patch Changes
+
+- Updated dependencies
+  - @solidjs-email/components@2.0.0
+  - @solidjs-email/render@2.0.0
+
 ## 1.1.0
 
 ### Minor Changes

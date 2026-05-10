@@ -24,10 +24,10 @@ cli
     process.env.EMAILS_DIR = emailsDir;
     process.env.PORT = String(port);
 
-    const vinxiPath = resolve(__dirname, '..', 'node_modules', '.bin', 'vinxi');
+    const vitePath = resolve(__dirname, '..', 'node_modules', '.bin', 'vite');
     const appConfigPath = resolve(__dirname, '..');
 
-    const child = spawn(vinxiPath, ['dev', '--port', String(port)], {
+    const child = spawn(vitePath, ['dev', '--port', String(port)], {
       cwd: appConfigPath,
       stdio: 'inherit',
       env: {
@@ -63,10 +63,10 @@ cli
     process.env.EMAILS_DIR = emailsDir;
     process.env.PORT = String(port);
 
-    const vinxiPath = resolve(__dirname, '..', 'node_modules', '.bin', 'vinxi');
+    const vitePath = resolve(__dirname, '..', 'node_modules', '.bin', 'vite');
     const appConfigPath = resolve(__dirname, '..');
 
-    const child = spawn(vinxiPath, ['dev', '--port', String(port)], {
+    const child = spawn(vitePath, ['dev', '--port', String(port)], {
       cwd: appConfigPath,
       stdio: 'inherit',
       env: {

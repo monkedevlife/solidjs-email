@@ -1,13 +1,18 @@
-import { Show, type Component } from 'solid-js';
-import { A } from '@solidjs/router';
-import { cache, createAsync } from '@solidjs/router';
+import { Show, type Component } from 'solid-js'
+import { Link, createFileRoute } from '@tanstack/solid-router'
+import { fetchTemplates } from '../lib/server'
 
-export default function Home() {
-  const data = createAsync(() => fetchTemplates());
+export const Route = createFileRoute('/')({
+  loader: async () => fetchTemplates(),
+  component: Home,
+})
+
+function Home() {
+  const data = Route.useLoaderData()
 
   return (
     <div class="flex h-screen bg-[var(--color-bg)]">
-      <Sidebar templates={data()?.templates ?? []} />
+      <Sidebar templates={data().templates ?? []} />
       <main class="flex-1 flex items-center justify-center">
         <div class="text-center">
           <div class="text-6xl mb-4">
@@ -36,16 +41,8 @@ export default function Home() {
         </div>
       </main>
     </div>
-  );
+  )
 }
-
-const fetchTemplates = cache(async () => {
-  'use server';
-  const { getEmailTemplates } = await import('../lib/emails');
-  const emailsDir = process.env.EMAILS_DIR || './emails';
-  const templates = getEmailTemplates(emailsDir);
-  return { templates };
-}, 'templates');
 
 const Sidebar: Component<{ templates: { name: string; slug: string }[] }> = (
   props
@@ -53,12 +50,12 @@ const Sidebar: Component<{ templates: { name: string; slug: string }[] }> = (
   return (
     <aside class="w-64 bg-[var(--color-bg-secondary)] border-r border-[var(--color-border)] flex flex-col">
       <div class="p-4 border-b border-[var(--color-border)]">
-        <A
-          href="/"
+        <Link
+          to="/"
           class="font-semibold text-[var(--color-text)] hover:text-[var(--color-accent)]"
         >
           SolidJS Email
-        </A>
+        </Link>
       </div>
       <div class="p-4 border-b border-[var(--color-border)]">
         <h3 class="text-xs uppercase tracking-wider text-[var(--color-text-muted)] mb-2">
@@ -77,17 +74,18 @@ const Sidebar: Component<{ templates: { name: string; slug: string }[] }> = (
           <ul class="space-y-1">
             {props.templates.map((template) => (
               <li>
-                <A
-                  href={`/preview/${template.slug}`}
+                <Link
+                  to="/preview/$slug"
+                  params={{ slug: template.slug }}
                   class="block px-3 py-2 rounded text-sm text-[var(--color-text-muted)] hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text)] transition-colors"
                 >
                   {template.name}
-                </A>
+                </Link>
               </li>
             ))}
           </ul>
         </Show>
       </nav>
     </aside>
-  );
-};
+  )
+}
