@@ -1,6 +1,6 @@
 import { createRequire } from "node:module";
 import url from "node:url";
-import solid from "rolldown-plugin-solid";
+import solid from "@rolldown-plugin/solid";
 import { defineConfig } from "tsdown";
 
 export default defineConfig({
