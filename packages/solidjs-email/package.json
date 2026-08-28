@@ -49,7 +49,8 @@
     "node": ">=20.0.0"
   },
   "peerDependencies": {
-    "solid-js": "^1.9.0"
+    "solid-js": "^2.0.0-rc.1",
+    "@solidjs/web": "^2.0.0-rc.1"
   },
   "dependencies": {
     "@solidjs-email/body": "workspace:*",
@@ -74,8 +75,9 @@
     "@solidjs-email/text": "workspace:*"
   },
   "devDependencies": {
-    "solid-js": "^1.9.0",
-    "typescript": "^5.8.0"
+    "solid-js": "^2.0.0-rc.1",
+    "typescript": "^5.8.0",
+    "@solidjs/web": "^2.0.0-rc.1"
   },
   "author": "solidjs-email",
   "repository": {

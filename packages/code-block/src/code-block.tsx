@@ -1,5 +1,6 @@
-import type { Component, JSX } from 'solid-js';
-import { splitProps, For } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { For, omit } from 'solid-js';
 import type { PrismLanguage } from './languages-available';
 import { Prism } from './prism';
 import type { Theme } from './themes';
@@ -14,7 +15,10 @@ export type CodeBlockProps = Readonly<
   }
 >;
 
-const stylesForToken = (token: Prism.Token, theme: Theme): JSX.CSSProperties => {
+const stylesForToken = (
+  token: Prism.Token,
+  theme: Theme,
+): JSX.CSSProperties => {
   let styles = { ...theme[token.type] } as JSX.CSSProperties;
 
   const aliases = Array.isArray(token.alias) ? token.alias : [token.alias];
@@ -72,26 +76,27 @@ const CodeBlockLine: Component<{
 };
 
 export const CodeBlock: Component<CodeBlockProps> = (props) => {
-  const [local, others] = splitProps(props, [
+  const others = omit(
+    props,
     'code',
     'fontFamily',
     'lineNumbers',
     'theme',
     'language',
     'style',
-  ]);
+  );
 
   const languageGrammar = () => {
-    const grammar = Prism.languages[local.language];
+    const grammar = Prism.languages[props.language];
     if (typeof grammar === 'undefined') {
       throw new Error(
-        `CodeBlock: There is no language defined on Prism called ${local.language}`,
+        `CodeBlock: There is no language defined on Prism called ${props.language}`,
       );
     }
     return grammar;
   };
 
-  const lines = () => local.code.split(/\r\n|\r|\n/gm);
+  const lines = () => props.code.split(/\r\n|\r|\n/gm);
 
   const tokensPerLine = () =>
     lines().map((line) => Prism.tokenize(line, languageGrammar()));
@@ -99,19 +104,23 @@ export const CodeBlock: Component<CodeBlockProps> = (props) => {
   return (
     <pre
       {...others}
-      style={{ ...local.theme.base, width: '100%', ...local.style as JSX.CSSProperties }}
+      style={{
+        ...props.theme.base,
+        width: '100%',
+        ...(props.style as JSX.CSSProperties),
+      }}
     >
       <code>
         <For each={tokensPerLine()}>
           {(tokensForLine, lineIndex) => (
             <>
-              {local.lineNumbers ? (
+              {props.lineNumbers ? (
                 <span
                   style={{
                     width: '2em',
                     height: '1em',
                     display: 'inline-block',
-                    'font-family': local.fontFamily,
+                    'font-family': props.fontFamily,
                   }}
                 >
                   {lineIndex() + 1}
@@ -121,8 +130,8 @@ export const CodeBlock: Component<CodeBlockProps> = (props) => {
               <For each={tokensForLine}>
                 {(token) => (
                   <CodeBlockLine
-                    inheritedStyles={{ 'font-family': local.fontFamily }}
-                    theme={local.theme}
+                    inheritedStyles={{ 'font-family': props.fontFamily }}
+                    theme={props.theme}
                     token={token}
                   />
                 )}

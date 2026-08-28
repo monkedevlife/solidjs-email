@@ -1,14 +1,15 @@
-import type { Component, JSX } from 'solid-js';
-import { splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 import { computeMargins } from './utils/compute-margins';
 
 export type TextProps = Readonly<JSX.HTMLAttributes<HTMLParagraphElement>>;
 
 export const Text: Component<TextProps> = (props) => {
-  const [local, others] = splitProps(props, ['style', 'children']);
+  const others = omit(props, 'style', 'children');
 
   const styleObj = () => {
-    const s = local.style;
+    const s = props.style;
     if (typeof s === 'string') return {};
     return s ?? {};
   };
@@ -25,10 +26,11 @@ export const Text: Component<TextProps> = (props) => {
     return result;
   };
 
-  const margins = () => computeMargins({
-    ...defaultMargins(),
-    ...styleObj(),
-  });
+  const margins = () =>
+    computeMargins({
+      ...defaultMargins(),
+      ...styleObj(),
+    });
 
   return (
     <p
@@ -40,7 +42,7 @@ export const Text: Component<TextProps> = (props) => {
         ...margins(),
       }}
     >
-      {local.children}
+      {props.children}
     </p>
   );
 };

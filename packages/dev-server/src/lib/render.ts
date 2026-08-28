@@ -6,17 +6,20 @@ export interface RenderResult {
 }
 
 function stripScripts(html: string): string {
-  return html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+  return html.replace(
+    /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
+    '',
+  );
 }
 
 export async function renderEmailTemplate(
-  templatePath: string
+  templatePath: string,
 ): Promise<RenderResult> {
   try {
     const timestamp = Date.now();
     const modulePath = `${templatePath}?t=${timestamp}`;
 
-    const module = await import(/* @vite-ignore */ modulePath);
+    const module = await import(modulePath);
 
     const EmailComponent = module.default || module[Object.keys(module)[0]];
 

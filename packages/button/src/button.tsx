@@ -1,5 +1,6 @@
-import type { Component, JSX } from 'solid-js';
-import { mergeProps, splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 import { parsePadding } from './utils/parse-padding';
 import { pxToPt } from './utils/px-to-pt';
 
@@ -27,11 +28,10 @@ function computeFontWidthAndSpaceCount(expectedWidth: number) {
 }
 
 export const Button: Component<ButtonProps> = (props) => {
-  const merged = mergeProps({ target: '_blank' as const }, props);
-  const [local, others] = splitProps(merged, ['children', 'style', 'target']);
+  const others = omit(props, 'children', 'style', 'target');
 
   const styleObj = () => {
-    const s = local.style;
+    const s = props.style;
     if (typeof s === 'string') return {};
     return s ?? {};
   };
@@ -41,8 +41,10 @@ export const Button: Component<ButtonProps> = (props) => {
   const y = () => (padding().paddingTop ?? 0) + (padding().paddingBottom ?? 0);
   const textRaise = () => pxToPt(y());
 
-  const plResult = () => computeFontWidthAndSpaceCount(padding().paddingLeft ?? 0);
-  const prResult = () => computeFontWidthAndSpaceCount(padding().paddingRight ?? 0);
+  const plResult = () =>
+    computeFontWidthAndSpaceCount(padding().paddingLeft ?? 0);
+  const prResult = () =>
+    computeFontWidthAndSpaceCount(padding().paddingRight ?? 0);
 
   const leftMsoHtml = () => {
     const [fontWidth, spaceCount] = plResult();
@@ -70,12 +72,20 @@ export const Button: Component<ButtonProps> = (props) => {
         'max-width': '100%',
         'mso-padding-alt': '0px',
         ...styleObj(),
-        'padding-top': padding().paddingTop ? `${padding().paddingTop}px` : undefined,
-        'padding-right': padding().paddingRight ? `${padding().paddingRight}px` : undefined,
-        'padding-bottom': padding().paddingBottom ? `${padding().paddingBottom}px` : undefined,
-        'padding-left': padding().paddingLeft ? `${padding().paddingLeft}px` : undefined,
+        'padding-top': padding().paddingTop
+          ? `${padding().paddingTop}px`
+          : undefined,
+        'padding-right': padding().paddingRight
+          ? `${padding().paddingRight}px`
+          : undefined,
+        'padding-bottom': padding().paddingBottom
+          ? `${padding().paddingBottom}px`
+          : undefined,
+        'padding-left': padding().paddingLeft
+          ? `${padding().paddingLeft}px`
+          : undefined,
       }}
-      target={local.target}
+      target={props.target ?? '_blank'}
     >
       <span innerHTML={leftMsoHtml()} />
       <span
@@ -87,7 +97,7 @@ export const Button: Component<ButtonProps> = (props) => {
           'mso-text-raise': pxToPt(padding().paddingBottom),
         }}
       >
-        {local.children}
+        {props.children}
       </span>
       <span innerHTML={rightMsoHtml()} />
     </a>

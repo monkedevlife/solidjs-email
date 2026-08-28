@@ -1,11 +1,15 @@
-import type { Component, JSX } from 'solid-js';
-import { mergeProps, splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 
 export type HtmlProps = Readonly<JSX.HTMLAttributes<HTMLHtmlElement>>;
 
 export const Html: Component<HtmlProps> = (props) => {
-  const merged = mergeProps({ lang: 'en', dir: 'ltr' as const }, props);
-  const [local, others] = splitProps(merged, ['children']);
+  const others = omit(props, 'children', 'lang', 'dir');
 
-  return <html {...others}>{local.children}</html>;
+  return (
+    <html {...others} lang={props.lang ?? 'en'} dir={props.dir ?? 'ltr'}>
+      {props.children}
+    </html>
+  );
 };

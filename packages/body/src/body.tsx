@@ -1,21 +1,22 @@
-import type { Component, JSX } from 'solid-js';
-import { splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 import { hasMarginProperty, marginProperties } from './margin-properties';
 
 export type BodyProps = Readonly<JSX.HTMLAttributes<HTMLBodyElement>>;
 
 export const Body: Component<BodyProps> = (props) => {
-  const [local, others] = splitProps(props, ['children', 'style']);
+  const others = omit(props, 'children', 'style');
 
   const bodyStyle = (): JSX.CSSProperties => {
     const style: JSX.CSSProperties = {
-      background: local.style?.background,
-      'background-color': local.style?.['background-color'],
+      background: props.style?.background,
+      'background-color': props.style?.['background-color'],
     };
 
-    if (local.style) {
+    if (props.style) {
       for (const property of marginProperties) {
-        if (hasMarginProperty(local.style, property)) {
+        if (hasMarginProperty(props.style, property)) {
           style[property] = 0;
         }
       }
@@ -36,7 +37,7 @@ export const Body: Component<BodyProps> = (props) => {
       >
         <tbody>
           <tr>
-            <td style={local.style}>{local.children}</td>
+            <td style={props.style}>{props.children}</td>
           </tr>
         </tbody>
       </table>

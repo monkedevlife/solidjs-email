@@ -1,29 +1,31 @@
 {
-	"name": "solidjs-email-monorepo",
-	"version": "0.0.0",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"build": "pnpm -r build",
-		"dev": "pnpm --filter @solidjs-email/dev-server dev",
-		"lint": "biome check",
-		"lint:fix": "biome check --write .",
-		"test": "pnpm -r test",
-		"changeset": "changeset",
-		"version": "changeset version",
-		"release": "pnpm build && pnpm -r publish --access public"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^2.0.0",
-		"@changesets/cli": "^2.29.8",
-		"@types/node": "^22.0.0",
-		"@rolldown-plugin/solid": "^0.0.4",
-		"solid-js": "^1.9.0",
-		"tsdown": "^0.11.0",
-		"typescript": "^5.8.0",
-		"vite-plugin-solid": "^2.11.0",
-		"vitest": "^4.0.0"
-	},
-	"packageManager": "pnpm@11.0.9",
-	"license": "MIT"
+  "name": "solidjs-email-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter @solidjs-email/dev-server dev",
+    "lint": "biome check",
+    "lint:fix": "biome check --write .",
+    "test": "pnpm -r test",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && pnpm -r publish --access public"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.0.0",
+    "@changesets/cli": "^2.29.8",
+    "@rolldown-plugin/solid": "^0.1.0",
+    "@solidjs/vite-plugin": "^3.0.0-next.31",
+    "@solidjs/web": "^2.0.0-rc.1",
+    "@types/node": "^22.0.0",
+    "solid-js": "^2.0.0-rc.1",
+    "tsdown": "^0.11.0",
+    "typescript": "^5.8.0",
+    "vite": "^7.3.6",
+    "vitest": "^4.0.0"
+  },
+  "packageManager": "pnpm@11.0.9",
+  "license": "MIT"
 }

@@ -85,7 +85,7 @@ describe('<Markdown> component', () => {
   });
 
   it('renders blockquotes', async () => {
-    const html = await render(() => <Markdown>> Quote text</Markdown>);
+    const html = await render(() => <Markdown>{'> Quote text'}</Markdown>);
     expect(html).toContain('<blockquote');
     expect(html).toContain('Quote text');
     expect(html).toContain('</blockquote>');
@@ -98,9 +98,7 @@ describe('<Markdown> component', () => {
 
   it('applies custom container styles', async () => {
     const html = await render(() => (
-      <Markdown markdownContainerStyles={{ padding: '20px' }}>
-        Hello
-      </Markdown>
+      <Markdown markdownContainerStyles={{ padding: '20px' }}>Hello</Markdown>
     ));
     expect(html).toContain('padding');
   });

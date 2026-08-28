@@ -1,11 +1,11 @@
-import type { Component, JSX } from 'solid-js';
-import { mergeProps, splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 
 export type LinkProps = Readonly<JSX.AnchorHTMLAttributes<HTMLAnchorElement>>;
 
 export const Link: Component<LinkProps> = (props) => {
-  const merged = mergeProps({ target: '_blank' as const }, props);
-  const [local, others] = splitProps(merged, ['children', 'style', 'target']);
+  const others = omit(props, 'children', 'style', 'target');
 
   return (
     <a
@@ -13,11 +13,11 @@ export const Link: Component<LinkProps> = (props) => {
       style={{
         color: '#067df7',
         'text-decoration-line': 'none',
-        ...local.style,
+        ...props.style,
       }}
-      target={local.target}
+      target={props.target ?? '_blank'}
     >
-      {local.children}
+      {props.children}
     </a>
   );
 };

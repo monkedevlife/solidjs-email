@@ -1,32 +1,35 @@
-import { createSignal, Show, type Component } from 'solid-js'
-import { Link, createFileRoute } from '@tanstack/solid-router'
-import { fetchEmailData } from '../../lib/server'
+import { createFileRoute, Link } from '@tanstack/solid-router';
+import { type Component, createSignal, Show } from 'solid-js';
+import { fetchEmailData } from '../../lib/server';
 
-type ViewMode = 'preview' | 'html'
+type ViewMode = 'preview' | 'html';
 
 export const Route = createFileRoute('/preview/$slug')({
-  loader: async ({ params: { slug } }) => fetchEmailData({ data: slug }),
+  loader: async ({ params: { slug } }) => fetchEmailData(slug),
   component: PreviewPage,
-})
+});
 
 function PreviewPage() {
-  const emailData = Route.useLoaderData()
-  const params = Route.useParams()
-  const [viewMode, setViewMode] = createSignal<ViewMode>('preview')
-  const [copied, setCopied] = createSignal(false)
+  const emailData = Route.useLoaderData();
+  const params = Route.useParams();
+  const [viewMode, setViewMode] = createSignal<ViewMode>('preview');
+  const [copied, setCopied] = createSignal(false);
 
   const copyToClipboard = async () => {
-    const data = emailData()
+    const data = emailData();
     if (data?.html) {
-      await navigator.clipboard.writeText(data.html)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      await navigator.clipboard.writeText(data.html);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     }
-  }
+  };
 
   return (
     <div class="flex h-screen bg-[var(--color-bg)]">
-      <Sidebar templates={emailData().templates ?? []} currentSlug={params().slug} />
+      <Sidebar
+        templates={emailData().templates ?? []}
+        currentSlug={params().slug}
+      />
       <div class="flex-1 flex flex-col">
         <Topbar
           title={emailData().template?.name ?? 'Loading...'}
@@ -55,17 +58,20 @@ function PreviewPage() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
 const Sidebar: Component<{
-  templates: { name: string; slug: string }[]
-  currentSlug?: string
+  templates: { name: string; slug: string }[];
+  currentSlug?: string;
 }> = (props) => {
   return (
     <aside class="w-64 bg-[var(--color-bg-secondary)] border-r border-[var(--color-border)] flex flex-col">
       <div class="p-4 border-b border-[var(--color-border)]">
-        <Link to="/" class="font-semibold text-[var(--color-text)] hover:text-[var(--color-accent)]">
+        <Link
+          to="/"
+          class="font-semibold text-[var(--color-text)] hover:text-[var(--color-accent)]"
+        >
           SolidJS Email
         </Link>
       </div>
@@ -103,15 +109,15 @@ const Sidebar: Component<{
         </Show>
       </nav>
     </aside>
-  )
-}
+  );
+};
 
 const Topbar: Component<{
-  title: string
-  viewMode: ViewMode
-  onViewModeChange: (mode: ViewMode) => void
-  onCopy: () => void
-  copied: boolean
+  title: string;
+  viewMode: ViewMode;
+  onViewModeChange: (mode: ViewMode) => void;
+  onCopy: () => void;
+  copied: boolean;
 }> = (props) => {
   return (
     <header class="h-14 px-4 border-b border-[var(--color-border)] flex items-center justify-between bg-[var(--color-bg-secondary)]">
@@ -160,8 +166,8 @@ const Topbar: Component<{
         </button>
       </div>
     </header>
-  )
-}
+  );
+};
 
 const PreviewFrame: Component<{ html: string }> = (props) => {
   return (
@@ -175,8 +181,8 @@ const PreviewFrame: Component<{ html: string }> = (props) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 const CodeView: Component<{ html: string }> = (props) => {
   return (
@@ -185,20 +191,34 @@ const CodeView: Component<{ html: string }> = (props) => {
         {props.html}
       </pre>
     </div>
-  )
-}
+  );
+};
 
 const CopyIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+  >
     <title>Copy</title>
     <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
   </svg>
-)
+);
 
 const CheckIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+  >
     <title>Copied</title>
     <polyline points="20 6 9 17 4 12" />
   </svg>
-)
+);

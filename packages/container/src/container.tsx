@@ -1,10 +1,11 @@
-import type { Component, JSX } from 'solid-js';
-import { splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 
 export type ContainerProps = Readonly<JSX.HTMLAttributes<HTMLTableElement>>;
 
 export const Container: Component<ContainerProps> = (props) => {
-  const [local, others] = splitProps(props, ['children', 'style']);
+  const others = omit(props, 'children', 'style');
 
   return (
     <table
@@ -15,11 +16,11 @@ export const Container: Component<ContainerProps> = (props) => {
       cellPadding="0"
       cellSpacing="0"
       role="presentation"
-      style={{ 'max-width': '37.5em', ...local.style }}
+      style={{ 'max-width': '37.5em', ...props.style }}
     >
       <tbody>
         <tr style={{ width: '100%' }}>
-          <td>{local.children}</td>
+          <td>{props.children}</td>
         </tr>
       </tbody>
     </table>

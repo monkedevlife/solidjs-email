@@ -8,11 +8,12 @@
   },
   "dependencies": {
     "@solidjs-email/components": "workspace:*",
-    "solid-js": "^1.9.0"
+    "solid-js": "^2.0.0-rc.1",
+    "@solidjs/web": "^2.0.0-rc.1"
   },
   "devDependencies": {
-    "vite": "^6.0.0",
-    "vite-node": "^5.0.0",
-    "vite-plugin-solid": "^2.11.0"
+    "vite": "^7.3.6",
+    "vite-node": "^5.3.0",
+    "@solidjs/vite-plugin": "^3.0.0-next.31"
   }
 }

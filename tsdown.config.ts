@@ -9,6 +9,7 @@ export default defineConfig({
       solid: {
         generate: 'ssr',
         hydratable: false,
+        moduleName: '@solidjs/web',
       },
     }),
   ],

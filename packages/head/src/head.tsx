@@ -1,16 +1,17 @@
-import type { Component, JSX } from 'solid-js';
-import { splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 
 export type HeadProps = Readonly<JSX.HTMLAttributes<HTMLHeadElement>>;
 
 export const Head: Component<HeadProps> = (props) => {
-  const [local, others] = splitProps(props, ['children']);
+  const others = omit(props, 'children');
 
   return (
     <head {...others}>
       <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
       <meta name="x-apple-disable-message-reformatting" />
-      {local.children}
+      {props.children}
     </head>
   );
 };

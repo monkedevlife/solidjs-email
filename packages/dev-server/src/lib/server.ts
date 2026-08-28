@@ -1,37 +1,33 @@
-import { createServerFn } from '@tanstack/solid-start'
-import { getEmailBySlug, getEmailTemplates } from './emails'
-import { renderEmailTemplate } from './render'
+import { getEmailBySlug, getEmailTemplates } from './emails';
+import { renderEmailTemplate } from './render';
 
-export const fetchTemplates = createServerFn({ method: 'GET' }).handler(
-  async () => {
-    const emailsDir = process.env.EMAILS_DIR || './emails'
-    const templates = getEmailTemplates(emailsDir)
-    return { templates }
-  }
-)
+export async function fetchTemplates() {
+  'use server';
+  const emailsDir = process.env.EMAILS_DIR || './emails';
+  return { templates: getEmailTemplates(emailsDir) };
+}
 
-export const fetchEmailData = createServerFn({ method: 'GET' })
-  .inputValidator((d: string) => d)
-  .handler(async ({ data: slug }) => {
-    const emailsDir = process.env.EMAILS_DIR || './emails'
-    const templates = getEmailTemplates(emailsDir)
-    const template = getEmailBySlug(emailsDir, slug)
+export async function fetchEmailData(slug: string) {
+  'use server';
+  const emailsDir = process.env.EMAILS_DIR || './emails';
+  const templates = getEmailTemplates(emailsDir);
+  const template = getEmailBySlug(emailsDir, slug);
 
-    if (!template) {
-      return {
-        templates,
-        template: null,
-        html: '',
-        error: `Template "${slug}" not found`,
-      }
-    }
-
-    const result = await renderEmailTemplate(template.path)
-
+  if (!template) {
     return {
       templates,
-      template,
-      html: result.html,
-      error: result.error,
-    }
-  })
+      template: null,
+      html: '',
+      error: `Template "${slug}" not found`,
+    };
+  }
+
+  const result = await renderEmailTemplate(template.path);
+
+  return {
+    templates,
+    template,
+    html: result.html,
+    error: result.error,
+  };
+}

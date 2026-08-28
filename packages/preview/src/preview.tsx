@@ -1,5 +1,6 @@
-import type { Component, JSX } from 'solid-js';
-import { splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 
 export type PreviewProps = Readonly<
   Omit<JSX.HTMLAttributes<HTMLDivElement>, 'children'> & {
@@ -11,10 +12,10 @@ const PREVIEW_MAX_LENGTH = 150;
 const whiteSpaceCodes = '\xa0\u200C\u200B\u200D\u200E\u200F\uFEFF';
 
 export const Preview: Component<PreviewProps> = (props) => {
-  const [local, others] = splitProps(props, ['children']);
+  const others = omit(props, 'children');
 
   const text = () => {
-    const c = local.children ?? '';
+    const c = props.children ?? '';
     return (Array.isArray(c) ? c.join('') : c).substring(0, PREVIEW_MAX_LENGTH);
   };
 

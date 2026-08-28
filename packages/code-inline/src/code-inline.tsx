@@ -1,12 +1,14 @@
-import type { Component, JSX } from 'solid-js';
-import { splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 
-type RootProps = JSX.HTMLAttributes<HTMLElement> & JSX.HTMLAttributes<HTMLSpanElement>;
+type RootProps = JSX.HTMLAttributes<HTMLElement> &
+  JSX.HTMLAttributes<HTMLSpanElement>;
 
 export type CodeInlineProps = Readonly<RootProps>;
 
 export const CodeInline: Component<CodeInlineProps> = (props) => {
-  const [local, others] = splitProps(props, ['children', 'class']);
+  const others = omit(props, 'children', 'class');
 
   return (
     <>
@@ -31,20 +33,17 @@ export const CodeInline: Component<CodeInlineProps> = (props) => {
       `}</style>
 
       {/* Does not render on Orange.fr */}
-      <code
-        {...others}
-        class={`${local.class ? local.class : ''} cino`.trim()}
-      >
-        {local.children}
+      <code {...others} class={`${props.class ? props.class : ''} cino`.trim()}>
+        {props.children}
       </code>
 
       {/* Renders only on Orange.fr */}
       <span
         {...others}
-        class={`${local.class ? local.class : ''} cio`.trim()}
-        style={{ display: 'none', ...others.style as JSX.CSSProperties }}
+        class={`${props.class ? props.class : ''} cio`.trim()}
+        style={{ display: 'none', ...(others.style as JSX.CSSProperties) }}
       >
-        {local.children}
+        {props.children}
       </span>
     </>
   );

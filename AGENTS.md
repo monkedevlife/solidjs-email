@@ -6,7 +6,7 @@ It uses SolidJS for components instead of React.
 ## Project Overview
 
 - **Package Manager:** pnpm 10.24.0
-- **Reference Implementation:** `.tmp/react-email/` (cloned react-email for guidance)
+- **Reference Implementation:** `.temp/react-email/` (cloned react-email for guidance)
 - **License:** MIT
 
 ## Commands
@@ -261,7 +261,7 @@ describe('<Button> component', () => {
 
 ## Reference Implementation
 
-The `.tmp/react-email/` directory contains the original react-email library for reference.
+The `.temp/react-email/` directory contains the original react-email library for reference.
 Use this to understand patterns and port components to SolidJS, but DO NOT MODIFY these files.
 
 Key differences when porting from React to SolidJS:

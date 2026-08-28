@@ -1,3 +1,4 @@
+import type { JSX } from '@solidjs/web';
 import {
   type CssNode,
   generate,
@@ -5,21 +6,15 @@ import {
   type Rule,
   type StyleSheet,
 } from 'css-tree';
+import type { Component } from 'solid-js';
 import type { Config } from 'tailwindcss';
-import type { Component, JSX } from 'solid-js';
 import { sanitizeStyleSheet } from './sanitize-stylesheet';
-import { extractRulesPerClass } from './utils/css/extract-rules-per-class';
-import {
-  getCustomProperties,
-  type CustomProperties,
-} from './utils/css/get-custom-properties';
-import { sanitizeNonInlinableRules } from './utils/css/sanitize-non-inlinable-rules';
-import {
-  setupTailwind,
-  type SetupTailwindOptions,
-} from './utils/tailwindcss/setup-tailwind';
-import { makeInlineStylesFor } from './utils/css/make-inline-styles-for';
 import { sanitizeClassName } from './utils/compatibility/sanitize-class-name';
+import { extractRulesPerClass } from './utils/css/extract-rules-per-class';
+import { getCustomProperties } from './utils/css/get-custom-properties';
+import { makeInlineStylesFor } from './utils/css/make-inline-styles-for';
+import { sanitizeNonInlinableRules } from './utils/css/sanitize-non-inlinable-rules';
+import { setupTailwind } from './utils/tailwindcss/setup-tailwind';
 
 export type TailwindConfig = Omit<Config, 'content'>;
 

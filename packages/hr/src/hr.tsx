@@ -1,10 +1,11 @@
-import type { Component, JSX } from 'solid-js';
-import { splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 
 export type HrProps = Readonly<JSX.HTMLAttributes<HTMLHRElement>>;
 
 export const Hr: Component<HrProps> = (props) => {
-  const [local, others] = splitProps(props, ['style']);
+  const others = omit(props, 'style');
 
   return (
     <hr
@@ -13,7 +14,7 @@ export const Hr: Component<HrProps> = (props) => {
         width: '100%',
         border: 'none',
         'border-top': '1px solid #eaeaea',
-        ...local.style,
+        ...props.style,
       }}
     />
   );

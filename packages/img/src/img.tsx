@@ -1,25 +1,26 @@
-import type { Component, JSX } from 'solid-js';
-import { splitProps } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
+import { omit } from 'solid-js';
 
 export type ImgProps = Readonly<JSX.ImgHTMLAttributes<HTMLImageElement>>;
 
 export const Img: Component<ImgProps> = (props) => {
-  const [local, others] = splitProps(props, ['alt', 'src', 'width', 'height', 'style']);
+  const others = omit(props, 'alt', 'src', 'width', 'height', 'style');
 
   return (
     <img
       {...others}
-      alt={local.alt}
-      height={local.height}
-      src={local.src}
+      alt={props.alt}
+      height={props.height}
+      src={props.src}
       style={{
         display: 'block',
         outline: 'none',
         border: 'none',
         'text-decoration': 'none',
-        ...local.style,
+        ...props.style,
       }}
-      width={local.width}
+      width={props.width}
     />
   );
 };

@@ -1,5 +1,5 @@
-import type { JSX } from 'solid-js';
-import { renderToStringAsync } from 'solid-js/web';
+import type { JSX } from '@solidjs/web';
+import { renderToStream } from '@solidjs/web';
 import { pretty } from './utils/pretty';
 import { toPlainText } from './utils/to-plain-text';
 
@@ -21,7 +21,10 @@ async function processTailwind(
 ): Promise<string> {
   try {
     const { processTailwindInHtml } = await import('@solidjs-email/tailwind');
-    return processTailwindInHtml(html, options as Parameters<typeof processTailwindInHtml>[1]);
+    return processTailwindInHtml(
+      html,
+      options as Parameters<typeof processTailwindInHtml>[1],
+    );
   } catch {
     return html;
   }
@@ -31,7 +34,7 @@ export async function render(
   component: () => JSX.Element,
   options?: RenderOptions,
 ): Promise<string> {
-  let html = await renderToStringAsync(component);
+  let html = await renderToStream(component);
 
   html = await processTailwind(html, options?.tailwind);
 

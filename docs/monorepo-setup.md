@@ -149,7 +149,7 @@ If you want to share email templates across multiple apps, create a dedicated pa
     "@solidjs-email/main": "^1.0.0"
   },
   "peerDependencies": {
-    "solid-js": "^1.9.0"
+    "solid-js": "^2.0.0-rc.1"
   }
 }
 ```
@@ -174,7 +174,7 @@ pnpm add @your-org/email-templates --filter web
 |--------|-------------|
 | Package Manager | pnpm recommended |
 | Node Version | >= 20.0.0 |
-| Peer Dependency | `solid-js ^1.9.0` |
+| Peer Dependency | `solid-js ^2.0.0-rc.1` |
 
 ## Rendering Options
 
